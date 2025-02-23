@@ -1,52 +1,56 @@
 <!-- component para registrar novos carros -->
 
 <form [formGroup]="carForm" class="mb-3">
-  <div>
-    <div class="form-group col-md-6">
-        <label for="name">Name</label>
-        <input id="name" type="text" class="form-control"
-        [class.is-invalid]="carForm.get('name')?.errors && carForm.get('name')?.touched" 
-        formControlName="name"/>
-        <div
-        *ngIf="carForm.get('name')?.hasError('required')"
-        class="invalid-feedback"
-        >
-          O campo modelo é obrigatório!
-        </div>
-        <div
-        *ngIf="
-        carForm.get('name')?.hasError('minlength') || 
-        carForm.get('name')?.hasError('maxlength')
-        "
-        
-        class="invalid-feedback"
-        >
-          O campo modelo deve ter entre 2 e 100 caracteres!
-        </div>
-    </div>
-    <div class="form-group col-md-6">
-      <label for="brand">Brand</label>
-      <input id="brand" type="text" class="form-control" 
-      [class.is-invalid]="carForm.get('brand')?.errors && carForm.get('brand')?.touched" 
-      formControlName="brand"/>
+  <!-- CAMPO DE MARCA -->
+  <div class="form-group col-md-6">
+    <label for="brand">Brand</label>
+    <input id="brand" type="number" class="form-control" 
+    [class.is-invalid]="carForm.get('brand')?.errors && carForm.get('brand')?.touched" 
+    formControlName="brand"/>
+    <div
+      *ngIf="carForm.get('brand')?.hasError('required')"
+      class="invalid-feedback"
+      >
+        O campo da marca é obrigatório!
+      </div>
       <div
-        *ngIf="carForm.get('brand')?.hasError('required')"
-        class="invalid-feedback"
-        >
-          O campo da marca é obrigatório!
-        </div>
-        <div
-        *ngIf="
-        carForm.get('brand')?.hasError('minlength') || 
-        carForm.get('brand')?.hasError('maxlength')
-        "
-        
-        class="invalid-feedback"
-        >
-          O campo da marca deve ter entre 2 e 100 caracteres!
-        </div>
+      *ngIf="
+      carForm.get('brand')?.hasError('min') || 
+      carForm.get('brand')?.hasError('max')
+      "
+      
+      class="invalid-feedback"
+      >
+        O campo da marca deve estar entre 0 e 14!
+      </div>
+  </div>
+
+  <!-- CAMPO DE MODELO -->
+  <div class="form-group col-md-6">
+      <label for="model">Modelo</label>
+      <input id="model" type="text" class="form-control"
+      [class.is-invalid]="carForm.get('model')?.errors && carForm.get('model')?.touched" 
+      formControlName="model"/>
+      <div
+      *ngIf="carForm.get('model')?.hasError('required')"
+      class="invalid-feedback"
+      >
+        O campo modelo é obrigatório!
+      </div>
+      <div
+      *ngIf="
+      carForm.get('model')?.hasError('minlength') || 
+      carForm.get('model')?.hasError('maxlength')
+      "
+      
+      class="invalid-feedback"
+      >
+        O campo modelo deve ter entre 2 e 100 caracteres!
     </div>
-    <div class="form-group col-md-6">
+  </div>
+
+  <!-- CAMPO DE ANO -->
+  <div class="form-group col-md-6">
       <label for="year">Year</label>
       <input id="year" type="text" class="form-control" 
       [class.is-invalid]="carForm.get('year')?.errors && carForm.get('year')?.touched" 
@@ -67,8 +71,54 @@
         >
           O campo do ano deve ter 4 caracteres!
         </div>
-    </div>
   </div>
+
+  <div class="form-group col-md-6">
+    <label for="price">Preço</label>
+    <input id="price" type="number" class="form-control" 
+    [class.is-invalid]="carForm.get('price')?.errors && carForm.get('price')?.touched" 
+    formControlName="price"/>
+    <div
+      *ngIf="carForm.get('price')?.hasError('required')"
+      class="invalid-feedback"
+      >
+        O campo de preço é obrigatório!
+      </div>
+      <div
+      *ngIf="
+      carForm.get('price')?.hasError('min') || 
+      carForm.get('price')?.hasError('max')
+      "
+      
+      class="invalid-feedback"
+      >
+        O campo de preço está incorreto!
+      </div>
+  </div>
+
+  <!-- CAMPO DE REGISTRO -->
+  <div class="form-group col-md-6">
+    <label for="registerDate">Ano de Registro</label>
+    <input id="registerDate" type="text" class="form-control" 
+    [class.is-invalid]="carForm.get('registerDate')?.errors && carForm.get('registerDate')?.touched" 
+    formControlName="registerDate"/>
+    <div
+      *ngIf="carForm.get('registerDate')?.hasError('required')"
+      class="invalid-feedback"
+      >
+        O campo do ano de registro é obrigatório!
+      </div>
+      <div
+      *ngIf="
+      carForm.get('registerDate')?.hasError('minlength') || 
+      carForm.get('registerDate')?.hasError('maxlength')
+      "
+      
+      class="invalid-feedback"
+      >
+        O campo do ano de registro deve ter 4 caracteres!
+      </div>
+</div>
   <button 
     [disabled]="!carForm.valid"
     (click)="SubmitForm()" 

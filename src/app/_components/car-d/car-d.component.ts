@@ -8,5 +8,5 @@ import { Car } from '../../_models/car';
   styleUrl: './car-d.component.css'
 })
 export class CarDComponent {
-  @Input() car: Car = {model: '', brand: '', year: ''};
+  @Input() car: Car = {model: '', brand: 0, year: '', price: 0, registerDate: ''};
 }

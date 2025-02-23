@@ -1,5 +1,7 @@
-export interface Car{
+export interface Car {
+  brand: Number;
   model: String;
-  brand: String;
-  year: String; //TODO: trocar para number
+  year: String;
+  price: Number;
+  registerDate: String;
 }
