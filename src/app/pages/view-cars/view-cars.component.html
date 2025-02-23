@@ -1,0 +1,9 @@
+<!-- component para visualizar todos os carros ja registrados -->
+
+<div class="row">
+  <app-car-d
+    *ngFor="let car of listCars"
+    [car] = "car"
+    class="col-md-3 mb-3"
+  ></app-car-d>
+</div>
