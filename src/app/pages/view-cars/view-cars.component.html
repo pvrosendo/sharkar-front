@@ -1,9 +1,9 @@
-<!-- component para visualizar todos os carros ja registrados -->
-
 <div class="row">
   <app-car-d
     *ngFor="let car of cars"
-    [car] = "car"
+    [car]="car"
+    (viewExpensiveCar)="openExpensiveCarModal($event)"
     class="col-md-3 mb-3"
   ></app-car-d>
 </div>
+<app-car-modal [car]="expensiveCar" (close)="closeModal()"></app-car-modal>

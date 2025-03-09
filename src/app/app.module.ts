@@ -13,6 +13,7 @@ import { ViewCarComponent } from './_components/view-car/view-car.component';
 import { CarDComponent } from './_components/car-d/car-d.component';
 import { ReactiveFormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http';
+import { CarModalComponent } from './_components/car-modal/car-modal.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     ViewCarsComponent,
     HomeComponent,
     ViewCarComponent,
-    CarDComponent
+    CarDComponent,
+    CarModalComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,13 @@
+<div class="modal" *ngIf="car">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <div class="card">
+      <div class="card-header">{{ car.model }}</div>
+      <div class="card-body">
+        <p><b>Brand: </b> {{ car.brand }}</p>
+        <p><b>Year: </b> {{ car.year }}</p>
+        <p><b>Price: </b> {{ car.price }}</p>
+      </div>
+    </div>
+  </div>
+</div>

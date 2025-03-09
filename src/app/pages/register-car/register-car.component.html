@@ -3,26 +3,31 @@
 <form [formGroup]="carForm" class="mb-3">
   <!-- CAMPO DE MARCA -->
   <div class="form-group col-md-6">
-    <label for="brand">Brand</label>
-    <input id="brand" type="number" class="form-control" 
-    [class.is-invalid]="carForm.get('brand')?.errors && carForm.get('brand')?.touched" 
-    formControlName="brand"/>
+    <label for="brand" class="form-label">Qual a marca do carro?</label>
+    <select id="brand" class="form-select" formControlName="brand">
+      <option value="" selected>Selecione a marca</option>
+      <option value="0">Fiat</option>
+      <option value="1">Honda</option>
+      <option value="2">Peugeot</option>
+      <option value="3">Hyundai</option>
+      <option value="4">Ford</option>
+      <option value="5">Chevrolet</option>
+      <option value="6">Renault</option>
+      <option value="7">Toyota</option>
+      <option value="8">Volkswagen</option>
+      <option value="9">Jeep</option>
+      <option value="10">Nissan</option>
+      <option value="11">Citroen</option>
+      <option value="12">BMW</option>
+      <option value="13">Mercedes</option>
+      <option value="14">Audi</option>
+    </select>
     <div
-      *ngIf="carForm.get('brand')?.hasError('required')"
+      *ngIf="carForm.get('brand')?.hasError('invalidBrand')"
       class="invalid-feedback"
-      >
-        O campo da marca é obrigatório!
-      </div>
-      <div
-      *ngIf="
-      carForm.get('brand')?.hasError('min') || 
-      carForm.get('brand')?.hasError('max')
-      "
-      
-      class="invalid-feedback"
-      >
-        O campo da marca deve estar entre 0 e 14!
-      </div>
+    >
+      Selecione uma marca!
+    </div>
   </div>
 
   <!-- CAMPO DE MODELO -->

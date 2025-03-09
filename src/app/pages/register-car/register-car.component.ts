@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CarService } from '../../_services/car.service';
 
 @Component({
@@ -19,12 +19,16 @@ export class RegisterCarComponent implements OnInit{
   
   initializeForm(){
     this.carForm = this.fb.group({
-      brand: [0, [Validators.required, Validators.min(0), Validators.max(14)]],
+      brand: ['', [Validators.required, this.brandValidator]],
       model: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
       year: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]],
       price: [0, [Validators.required, Validators.min(0), Validators.max(1000000000)]],
       registerDate: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]]
     })
+  }
+
+  brandValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    return control.value === '' ? { 'invalidBrand': true } : null;
   }
 
   SubmitForm(){

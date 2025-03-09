@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { Car } from '../../_models/car';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Car} from '../../_models/car';
 
 @Component({
   selector: 'app-car-d',
@@ -9,4 +9,10 @@ import { Car } from '../../_models/car';
 })
 export class CarDComponent {
   @Input() car: Car = {model: '', brand: 0, year: '', price: 0, registerDate: ''};
+  @Output() viewExpensiveCar = new EventEmitter<Car>();
+
+  openExpensiveCarModal() {
+    const expensiveCar = {...this.car, price: this.car.price};
+    this.viewExpensiveCar.emit(expensiveCar);
+  }
 }
