@@ -1,9 +1,12 @@
-<div class="row">
-  <app-car-d
-    *ngFor="let car of cars"
-    [car]="car"
-    (viewExpensiveCar)="openExpensiveCarModal($event)"
-    class="col-md-3 mb-3"
-  ></app-car-d>
+<div class="container">
+  <h1 class="text-center mb-5" >Carros registrados</h1>
+  <div class="row" *ngIf="cars.length > 0">
+    <app-car-d
+      *ngFor="let car of cars"
+      [car]="car"
+      (viewExpensiveCar)="openExpensiveCarModal($event)"
+      class="col-md-3 mb-3"
+    ></app-car-d>
+  </div>
+  <app-car-modal [car]="expensiveCar" (close)="closeModal()"></app-car-modal>
 </div>
-<app-car-modal [car]="expensiveCar" (close)="closeModal()"></app-car-modal>
