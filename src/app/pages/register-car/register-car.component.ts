@@ -21,7 +21,7 @@ export class RegisterCarComponent implements OnInit{
     this.carForm = this.fb.group({
       brand: ['', [Validators.required, this.brandValidator]],
       model: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
-      year: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]],
+      year: [0, [Validators.required, Validators.min(1800), Validators.max(2030)]],
       price: [0, [Validators.required, Validators.min(0), Validators.max(1000000000)]],
       displacement: ["", [Validators.required]],
       carType: ["", [Validators.required]]

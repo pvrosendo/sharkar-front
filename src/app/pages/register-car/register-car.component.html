@@ -1,4 +1,5 @@
 <!-- component para registrar novos carros -->
+
 <div justify-content-center class="container">
   <h1 class="text-center mb-5">Registrar novo carro</h1>
   <form [formGroup]="carForm" class="mb-3 justify-content-center">
@@ -58,7 +59,7 @@
     <!-- CAMPO DE ANO -->
     <div class="form-group col-md-6">
         <label for="year">Year</label>
-        <input id="year" type="text" class="form-control" 
+        <input id="year" type="number" class="form-control " 
         [class.is-invalid]="carForm.get('year')?.errors && carForm.get('year')?.touched" 
         formControlName="year"/>
         <div
@@ -69,16 +70,17 @@
           </div>
           <div
           *ngIf="
-          carForm.get('year')?.hasError('minlength') || 
-          carForm.get('year')?.hasError('maxlength')
+          carForm.get('year')?.hasError('min') || 
+          carForm.get('year')?.hasError('max')
           "
           
           class="invalid-feedback"
           >
-            O campo do ano deve ter 4 caracteres!
+            O ano é inválido!
           </div>
     </div>
   
+    <!-- CAMPO DE PREÇO -->
     <div class="form-group col-md-6">
       <label for="price">Preço</label>
       <input id="price" type="number" class="form-control" 
@@ -106,7 +108,7 @@
     <div class="form-group col-md-6">
       <label for="displacement" class="form-label">Qual a motorização?</label>
       <select id="displacement" class="form-select" formControlName="displacement">
-        <option value="" selected>Selecione a potência do motor</option>
+        <option value="" selected></option>
         <option value="0.8">0.8</option>
         <option value="1.0">1.0</option>
         <option value="1.2">1.2</option>
@@ -128,38 +130,24 @@
         <option value="4.2">4.2</option>
         <option value="4.4">4.4</option>
         <option value="5.0">5.0</option>
-
       </select>
-      <!-- <div
-        *ngIf="carForm.get('displacement')?.hasError('invalidBrand')"
-        class="invalid-feedback"
-      >
-        Selecione uma opção!
-      </div> -->
     </div>
 
-    <!-- CAMPO DE MOTORIZAÇÃO -->
+    <!-- CAMPO DE TIPO -->
     <div class="form-group col-md-6">
       <label for="carType" class="form-label">Qual o tipo de câmbio?</label>
       <select id="carType" class="form-select" formControlName="carType">
-        <option value="" selected>Selecione o câmbio</option>
+        <option value="" selected></option>
         <option value="0">Manual</option>
         <option value="1">Automático</option>
-
       </select>
-      <!-- <div
-        *ngIf="carForm.get('carType')?.hasError('invalidBrand')"
-        class="invalid-feedback"
-      >
-        Selecione uma opção!
-      </div> -->
     </div>
 
     <button 
       [disabled]="!carForm.valid"
       (click)="SubmitForm()" 
       class="btn btn-success mt-3"> 
-        Add car
+        Adicionar carro
     </button>
   </form>
 </div>
