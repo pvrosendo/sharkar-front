@@ -4,9 +4,12 @@
     <div class="card">
       <div class="card-header">{{ car.model }}</div>
       <div class="card-body">
-        <p><b>Brand: </b> {{ car.brand }}</p>
-        <p><b>Year: </b> {{ car.year }}</p>
-        <p><b>Price: </b> {{ car.price }}</p>
+        <p><b>Marca: </b> {{ car.brand }}</p>
+        <p><b>Ano: </b> {{ car.year }}</p>
+        <p><b>Preço: </b> {{ car.price }}</p>
+        <p><b>Motor: </b> {{ car.displacement }} </p>
+        <p><b>Tipo de câmbio: </b> {{ car.carType }}</p>
+        <p><b>Última atualização: </b> {{ car.registerDate.substr(0,10) }}</p>
       </div>
     </div>
   </div>

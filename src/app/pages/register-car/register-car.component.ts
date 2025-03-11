@@ -23,7 +23,8 @@ export class RegisterCarComponent implements OnInit{
       model: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
       year: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]],
       price: [0, [Validators.required, Validators.min(0), Validators.max(1000000000)]],
-      registerDate: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]]
+      displacement: ["", [Validators.required]],
+      carType: ["", [Validators.required]]
     })
   }
 
