@@ -8,5 +8,5 @@
       class="col-md-3 mb-3"
     ></app-car-d>
   </div>
-  <app-car-modal [car]="expensiveCar" (close)="closeModal()"></app-car-modal>
+  <app-car-modal [car]="expensiveCar" (close)="closeModal()" (carDeleted)="refreshCars()"></app-car-modal>
 </div>

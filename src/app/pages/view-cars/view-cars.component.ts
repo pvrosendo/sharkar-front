@@ -15,21 +15,19 @@ export class ViewCarsComponent implements OnInit {
 
   expensiveCar: Car | null = null;
 
-  constructor(private carService: CarService) {
-  }
+  constructor(private carService: CarService) {}
 
-  ngOnInit() {
+  ngOnInit() { this.loadCars(); }
+
+  loadCars(){
     this.carService.getAllCars().subscribe((data: any) => {
       this.cars = data;
     });
   }
+  refreshCars() { this.loadCars(); }
 
-  openExpensiveCarModal(car: Car) {
-    this.expensiveCar = car;
-  }
+  openExpensiveCarModal(car: Car) { this.expensiveCar = car; }
 
-  closeModal() {
-    this.expensiveCar = null;
-  }
+  closeModal() { this.expensiveCar = null; }
 
 }

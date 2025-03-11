@@ -15,7 +15,7 @@ export class CarService {
     return this.http.get(this.baseUrl);
   }
 
-  getCarById(id: number) {
+  getCarById(id: Number) {
     return this.http.get(`${this.baseUrl}/${id}`);
   }
 
@@ -23,11 +23,11 @@ export class CarService {
     return this.http.post(this.baseUrl, car);
   }
 
-  updateCar(id: number, car: any) {
+  updateCar(id: Number, car: any) {
     return this.http.put(`${this.baseUrl}/${id}`, car);
   }
 
-  deleteCar(id: number) {
+  deleteCar(id: Number) {
     return this.http.delete(`${this.baseUrl}/${id}`);
   }
   

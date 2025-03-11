@@ -8,7 +8,7 @@ import {Car} from '../../_models/car';
   styleUrl: './car-d.component.css'
 })
 export class CarDComponent {
-  @Input() car: Car = {brand: 0, model: '', year: '', price: 0, displacement: '', carType: 0, registerDate: ''};
+  @Input() car: Car = {id: 0, brand: 0, model: '', year: '', price: 0, displacement: '', carType: 0, registerDate: ''};
   @Output() viewExpensiveCar = new EventEmitter<Car>();
 
   openExpensiveCarModal() {
