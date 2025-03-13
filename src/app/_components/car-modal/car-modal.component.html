@@ -6,17 +6,22 @@
       <div class="card-body">
         <p><b>Marca: </b> {{ car.brand }}</p>
         <p><b>Ano: </b> {{ car.year }}</p>
-        <p><b>Preço: </b> {{ car.price }}</p>
+        <p><b>Preço: </b> R$ {{ car.price | number:'1.2-2':'pt-BR' }}</p>
         <p><b>Motor: </b> {{ car.displacement }} </p>
         <p><b>Tipo de câmbio: </b> {{ car.carType }}</p>
         <p><b>Última atualização: </b> {{ car.registerDate }}</p>
+      <div class="card-footer">
         <button
-        (click)="DeleteCar(car.id)"
-        class="btn btn-success mt-3"> 
-       Deletar carro</button>
+          (click)="UpdateCar(car.id)"
+          class="btn btn-success mt-3 me-2"> 
+          Editar
+        </button>
+        <button
+          (click)="DeleteCar(car.id)"
+          class="btn btn-success mt-3"> 
+          Deletar carro
+        </button>
       </div>
     </div>
   </div>
 </div>
-
-<!--   -->

@@ -1,7 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Car} from '../../_models/car';
 import { CarService } from '../../_services/car.service';
-import { ViewCarsComponent } from '../../pages/view-cars/view-cars.component';
 
 @Component({
   selector: 'app-car-modal',
@@ -15,22 +14,27 @@ export class CarModalComponent {
   @Output() close = new EventEmitter();
   @Output() carDeleted = new EventEmitter();
 
-
-  constructor(private carService: CarService, private viewCars: ViewCarsComponent) {}
+  constructor(private carService: CarService) {}
 
   DeleteCar(id: Number) {
     if (this.car) {
-      this.carService.deleteCar(this.car.id).subscribe(() => {
+      this.carService.deleteCar(id).subscribe(() => {
         this.car = null;
         this.carDeleted.emit();
         this.closeModal();
       });
 
     } else { this.closeModal(); }
-    
   }
 
-
+  UpdateCar(id: Number){
+    if (this.car){
+      this.carService.updateCar(id, this.car).subscribe(() => {
+        this.close.emit();
+        this.closeModal();
+      });
+    }
+  }
 
   closeModal() {
     this.car = null;
