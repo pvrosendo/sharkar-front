@@ -12,8 +12,8 @@ import {Car} from '../../_models/car';
 export class ViewCarsComponent implements OnInit {
 
   cars: any[] = [];
-
   expensiveCar: Car | null = null;
+  carToUpdate: {id: Number, car: Car} | null = null;
 
   constructor(private carService: CarService) {}
 
@@ -29,5 +29,19 @@ export class ViewCarsComponent implements OnInit {
   openExpensiveCarModal(car: Car) { this.expensiveCar = car; }
 
   closeModal() { this.expensiveCar = null; }
+
+  openUpdateModal(data: {id: Number, car: Car}) {
+    console.log('Abrindo modal de atualização', data);
+    // Crie uma cópia do objeto para evitar referências compartilhadas
+    this.carToUpdate = {
+      id: data.id,
+      car: {...data.car}
+    };
+  }
+  
+  closeUpdateModal() {
+    this.carToUpdate = null;
+    this.refreshCars(); // Atualiza a lista após editar
+  }
 
 }

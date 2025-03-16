@@ -1,5 +1,6 @@
+<!-- view-cars.component.html -->
 <div class="container">
-  <h1 class="text-center mb-5" >Carros registrados</h1>
+  <h1 class="text-center mb-5">Carros registrados</h1>
   <div class="row" *ngIf="cars.length > 0">
     <app-car-d
       *ngFor="let car of cars"
@@ -8,5 +9,16 @@
       class="col-md-3 mb-3"
     ></app-car-d>
   </div>
-  <app-car-modal [car]="expensiveCar" (close)="closeModal()" (carDeleted)="refreshCars()"></app-car-modal>
+  <app-car-modal 
+    [car]="expensiveCar" 
+    (close)="closeModal()" 
+    (carDeleted)="refreshCars()"
+    (carToUpdate)="openUpdateModal($event)">
+  </app-car-modal>
+
+  <app-update-modal 
+    *ngIf="carToUpdate"
+    [car]="carToUpdate.car"
+    (close)="closeUpdateModal()">
+  </app-update-modal>
 </div>
