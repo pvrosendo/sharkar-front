@@ -1,29 +1,22 @@
-<div class="modal" *ngIf="car">
-  <div class="modal-content">
-    <span class="close" (click)="closeModal()">&times;</span>
-    <div class="card">
-      <div class="card-header">{{ car.model }}</div>
-      <div class="card-body">
+<div class="modal" tabindex="-1" *ngIf="car">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width: 80%; width: 800px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ car.model }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
         <p><b>Marca: </b> {{ car.brand }}</p>
         <p><b>Ano: </b> {{ car.year }}</p>
         <p><b>Preço: </b> R$ {{ car.price | number:'1.2-2':'pt-BR' }}</p>
         <p><b>Motor: </b> {{ car.displacement }} </p>
         <p><b>Tipo de câmbio: </b> {{ car.carType }}</p>
         <p><b>Última atualização: </b> {{ car.registerDate }}</p>
-      <div class="card-footer">
-        <button
-          (click)="UpdateCar(car.id, car)"
-          class="btn btn-success mt-3 me-2"> 
-          Editar
-        </button>
-        <button
-          (click)="DeleteCar(car.id)"
-          class="btn btn-success mt-3"> 
-          Deletar carro
-        </button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="DeleteCar(car.id)">Deletar</button>
+        <button type="button" class="btn btn-secondary" (click)="UpdateCar(car.id, car)" >Editar</button>
       </div>
     </div>
   </div>
 </div>
-
-<!-- (click)="UpdateCar(car.id)" -->

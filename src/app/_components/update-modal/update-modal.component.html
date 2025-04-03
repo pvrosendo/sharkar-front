@@ -11,6 +11,7 @@
           <div class="form-group mb-3">
             <label for="brand" class="form-label">Qual a marca do carro?</label>
             <select id="brand" class="form-select" formControlName="brand">
+              <option value="" selected>Selecione a marca</option>
               <option value="0">Fiat</option>
               <option value="1">Honda</option>
               <option value="2">Peugeot</option>
@@ -60,7 +61,7 @@
           
           <!-- CAMPO DE ANO -->
           <div class="form-group mb-3">
-            <label for="year">Ano</label>
+            <label for="year">Year</label>
             <input id="year" type="number" class="form-control" 
             [class.is-invalid]="updateForm.get('year')?.errors && updateForm.get('year')?.touched" 
             formControlName="year"/>
@@ -108,6 +109,7 @@
           <div class="form-group mb-3">
             <label for="displacement" class="form-label">Qual a motorização?</label>
             <select id="displacement" class="form-select" formControlName="displacement">
+              <option value="" selected></option>
               <option value="0.8">0.8</option>
               <option value="1.0">1.0</option>
               <option value="1.2">1.2</option>
@@ -136,6 +138,7 @@
           <div class="form-group mb-3">
             <label for="carType" class="form-label">Qual o tipo de câmbio?</label>
             <select id="carType" class="form-select" formControlName="carType">
+              <option value="" selected></option>
               <option value="0">Manual</option>
               <option value="1">Automático</option>
             </select>

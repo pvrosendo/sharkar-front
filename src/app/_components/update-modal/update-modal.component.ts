@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CarService } from '../../_services/car.service';
 import { Car } from '../../_models/car';
@@ -9,7 +9,7 @@ import { Car } from '../../_models/car';
   templateUrl: './update-modal.component.html',
   styleUrl: './update-modal.component.css'
 })
-export class UpdateModalComponent implements OnInit, OnChanges {
+export class UpdateModalComponent implements OnInit {
   @Input() car: Car = {id: 0, brand: 0, model: '', year: '', price: 0, displacement: '', carType: 0, registerDate: ''};
   @Output() close = new EventEmitter();
   @Output() carUpdated = new EventEmitter();
@@ -32,39 +32,17 @@ export class UpdateModalComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.setFormValues();
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['car'] && !changes['car'].firstChange) {
-      this.setFormValues();
-    }
-  }
-  
-  setFormValues() {
-    if (this.car) {
-      console.log('Setting form values with car:', this.car);
-      
-      // Reset the form before setting values
-      this.updateForm.reset();
-      
-      // Set values with patchValue
-      setTimeout(() => {
-        this.updateForm.patchValue({
-          brand: this.car.brand.toString(),
-          model: this.car.model,
-          year: this.car.year,
-          price: this.car.price,
-          displacement: this.car.displacement,
-          carType: this.car.carType.toString(),
-          registerDate: this.car.registerDate
-        });
-        
-        console.log('Form values after patch:', this.updateForm.value);
-        console.log('Form control values: Brand=', this.updateForm.get('brand')?.value, 
-                   'CarType=', this.updateForm.get('carType')?.value);
-      }, 0);
-    }
+    console.log('Modal de atualização inicializado com carro:', this.car);
+    // Preenche o formulário com os dados do carro
+    this.updateForm.patchValue({
+      brand: this.car.brand.toString(),
+      model: this.car.model,
+      year: this.car.year,
+      price: this.car.price,
+      displacement: this.car.displacement,
+      carType: this.car.carType.toString(),
+      registerDate: this.car.registerDate
+    });
   }
 
   closeModal() {

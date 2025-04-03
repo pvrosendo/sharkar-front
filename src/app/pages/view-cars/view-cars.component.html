@@ -1,7 +1,7 @@
 <!-- view-cars.component.html -->
-<div class="container">
-  <h1 class="text-center mb-5">Carros registrados</h1>
-  <div class="row" *ngIf="cars.length > 0">
+<div class="container my-4" >
+  <!-- <h1 class="text-center mb-5">Carros registrados</h1> -->
+  <div class="row"  *ngIf="cars.length > 0">
     <app-car-d
       *ngFor="let car of cars"
       [car]="car"
