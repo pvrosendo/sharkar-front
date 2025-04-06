@@ -30,5 +30,9 @@ export class CarService {
   deleteCar(id: Number) {
     return this.http.delete(`${this.baseUrl}/${id}`);
   }
+
+  getAllBrands(){
+    return this.http.get(this.baseUrl + "/brands");
+  }
   
 }

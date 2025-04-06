@@ -7,22 +7,8 @@
     <div class="form-group col-md-6">
       <label for="brand" class="form-label">Qual a marca do carro?</label>
       <select id="brand" class="form-select" formControlName="brand">
-        <option value="" selected>Selecione a marca</option>
-        <option value="0">Fiat</option>
-        <option value="1">Honda</option>
-        <option value="2">Peugeot</option>
-        <option value="3">Hyundai</option>
-        <option value="4">Ford</option>
-        <option value="5">Chevrolet</option>
-        <option value="6">Renault</option>
-        <option value="7">Toyota</option>
-        <option value="8">Volkswagen</option>
-        <option value="9">Jeep</option>
-        <option value="10">Nissan</option>
-        <option value="11">Citroen</option>
-        <option value="12">BMW</option>
-        <option value="13">Mercedes</option>
-        <option value="14">Audi</option>
+        <option value="" disable selected>Selecione a marca</option>
+        <option *ngFor="let brand of brands" [value]="brand.brandId"> {{ brand.brandName }}</option>
       </select>
       <div
         *ngIf="carForm.get('brand')?.hasError('invalidBrand')"
@@ -33,7 +19,7 @@
     </div>
   
     <!-- CAMPO DE MODELO -->
-    <div class="form-group col-md-6">
+    <!-- <div class="form-group col-md-6">
         <label for="model">Modelo</label>
         <input id="model" type="text" class="form-control"
         [class.is-invalid]="carForm.get('model')?.errors && carForm.get('model')?.touched" 
@@ -54,10 +40,10 @@
         >
           O campo modelo deve ter entre 2 e 100 caracteres!
       </div>
-    </div>
+    </div> -->
   
     <!-- CAMPO DE ANO -->
-    <div class="form-group col-md-6">
+    <!-- <div class="form-group col-md-6">
         <label for="year">Year</label>
         <input id="year" type="number" class="form-control " 
         [class.is-invalid]="carForm.get('year')?.errors && carForm.get('year')?.touched" 
@@ -78,10 +64,10 @@
           >
             O ano é inválido!
           </div>
-    </div>
+    </div> -->
   
     <!-- CAMPO DE PREÇO -->
-    <div class="form-group col-md-6">
+    <!-- <div class="form-group col-md-6">
       <label for="price">Preço</label>
       <input id="price" type="number" class="form-control" 
       [class.is-invalid]="carForm.get('price')?.errors && carForm.get('price')?.touched" 
@@ -102,10 +88,10 @@
         >
           O campo de preço está incorreto!
         </div>
-    </div>
+    </div> -->
   
     <!-- CAMPO DE MOTORIZAÇÃO -->
-    <div class="form-group col-md-6">
+    <!-- <div class="form-group col-md-6">
       <label for="displacement" class="form-label">Qual a motorização?</label>
       <select id="displacement" class="form-select" formControlName="displacement">
         <option value="" selected></option>
@@ -131,17 +117,17 @@
         <option value="4.4">4.4</option>
         <option value="5.0">5.0</option>
       </select>
-    </div>
+    </div> -->
 
     <!-- CAMPO DE TIPO -->
-    <div class="form-group col-md-6">
+    <!-- <div class="form-group col-md-6">
       <label for="carType" class="form-label">Qual o tipo de câmbio?</label>
       <select id="carType" class="form-select" formControlName="carType">
         <option value="" selected></option>
         <option value="0">Manual</option>
         <option value="1">Automático</option>
       </select>
-    </div>
+    </div> -->
 
     <button 
       [disabled]="!carForm.valid"
