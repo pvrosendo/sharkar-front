@@ -19,7 +19,7 @@
     </div>
   
     <!-- CAMPO DE MODELO -->
-    <!-- <div class="form-group col-md-6">
+    <div class="form-group col-md-6">
         <label for="model">Modelo</label>
         <input id="model" type="text" class="form-control"
         [class.is-invalid]="carForm.get('model')?.errors && carForm.get('model')?.touched" 
@@ -40,12 +40,12 @@
         >
           O campo modelo deve ter entre 2 e 100 caracteres!
       </div>
-    </div> -->
+    </div>
   
     <!-- CAMPO DE ANO -->
-    <!-- <div class="form-group col-md-6">
+    <div class="form-group col-md-6">
         <label for="year">Year</label>
-        <input id="year" type="number" class="form-control " 
+        <input id="year" type="number" class="form-control"
         [class.is-invalid]="carForm.get('year')?.errors && carForm.get('year')?.touched" 
         formControlName="year"/>
         <div
@@ -64,10 +64,10 @@
           >
             O ano é inválido!
           </div>
-    </div> -->
+    </div>
   
     <!-- CAMPO DE PREÇO -->
-    <!-- <div class="form-group col-md-6">
+    <div class="form-group col-md-6">
       <label for="price">Preço</label>
       <input id="price" type="number" class="form-control" 
       [class.is-invalid]="carForm.get('price')?.errors && carForm.get('price')?.touched" 
@@ -88,10 +88,10 @@
         >
           O campo de preço está incorreto!
         </div>
-    </div> -->
+    </div>
   
     <!-- CAMPO DE MOTORIZAÇÃO -->
-    <!-- <div class="form-group col-md-6">
+    <div class="form-group col-md-6">
       <label for="displacement" class="form-label">Qual a motorização?</label>
       <select id="displacement" class="form-select" formControlName="displacement">
         <option value="" selected></option>
@@ -117,17 +117,17 @@
         <option value="4.4">4.4</option>
         <option value="5.0">5.0</option>
       </select>
-    </div> -->
+    </div>
 
     <!-- CAMPO DE TIPO -->
-    <!-- <div class="form-group col-md-6">
+    <div class="form-group col-md-6">
       <label for="carType" class="form-label">Qual o tipo de câmbio?</label>
       <select id="carType" class="form-select" formControlName="carType">
         <option value="" selected></option>
         <option value="0">Manual</option>
         <option value="1">Automático</option>
       </select>
-    </div> -->
+    </div>
 
     <button 
       [disabled]="!carForm.valid"
