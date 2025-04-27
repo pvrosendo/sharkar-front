@@ -1,5 +1,4 @@
-export interface Brand {
-  id: Number;
+export interface FipeBrandModels {
   brandId: Number;
   brandName: String;
 }

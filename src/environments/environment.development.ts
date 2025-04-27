@@ -1,1 +1,4 @@
-export const environment = { apiUrl: 'http://localhost:8080/dream-car' };
+export const environment = { 
+  apiUrl: 'http://localhost:8080/dream-car', 
+  apiUrlFipe: 'http://localhost:8080/dream-car/fipe'
+};

@@ -8,7 +8,8 @@ import { HttpClient } from '@angular/common/http';
 export class CarService {
 
   baseUrl: string = environment.apiUrl;
-
+  fipeUrl: string = environment.apiUrlFipe;
+ 
   constructor(private http: HttpClient) { }
 
   getAllCars(){
@@ -32,7 +33,19 @@ export class CarService {
   }
 
   getAllBrands(){
-    return this.http.get(this.baseUrl + "/brands");
+    return this.http.get(this.fipeUrl + "/brands");
+  }
+
+  getAllModelsByBrand(brandId: Number){
+    return this.http.get(this.fipeUrl + "/models?brandId=" + brandId);
+  }
+
+  getAllYearsByBrandAndModel(brandId: Number, modelId: Number){
+    return this.http.get(this.fipeUrl + "/years?brandId=" + brandId + "&modelId=" + modelId);
+  }
+
+  getAllInfoCarByBrandModelAndYear(brandId: Number, modelId: Number, yearId: String){
+    return this.http.get(this.fipeUrl + "/info?brandId=" + brandId + "&modelId=" + modelId + "&yearId=" + yearId);
   }
   
 }
