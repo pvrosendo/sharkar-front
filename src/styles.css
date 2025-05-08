@@ -1,3 +1,19 @@
+:root {
+  --primary-color: #3f51b5;
+  --primary-light: #5c6bc0;
+  --primary-dark: #303f9f;
+  --accent-color: #ff4081;
+  --background-dark: #1a1a1a;
+  --surface-dark: #ffffff;
+  --text-primary: #1a1a1a;
+  --text-secondary: #4a4a4a;
+  --text-muted: #757575;
+  --error-color: #dc3545;
+  --success-color: #28a745;
+  --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --card-border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 html, body {
   height: 100%;
   margin: 0;
@@ -7,13 +23,15 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  height: 100%; 
+  margin: 0; 
+  font-family: Roboto, "Helvetica Neue", sans-serif; 
 }
 
 #content {
   flex: 1;
 }
 
-/* Remove as setas de incremento e decremento dos inputs numéricos */
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
