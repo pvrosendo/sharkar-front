@@ -1,21 +1,91 @@
-<!-- component de pagina principal -->
-<body class="text-center">
-  <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
-
-    <main role="main" class="inner cover">
-      <h1 class="cover-heading">Dream Car</h1>
-      <p class="lead">Registre e acompanhe seus carros favoritos para comparar e tomar a melhor decisão de compra.</p>
-      <p class="lead">
-        <a href="/signin" class="btn btn-lg btn-secondary">Sign up</a>
-      </p>
-    </main>
-
-    <footer class="mastfoot d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
-      <div class="col-md-4 d-flex align-items-center">
-        <a href="/" class="mb-3 me-2 mb-md-0 text-decoration-none lh-1">
-          <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
-        </a>
-        <span class="mb-3 mb-md-0">© 2025 Rosendo</span>
-      </div>
-    </footer>
+<section class="hero-section">
+  <div class="hero-content">
+    <h1 class="hero-title">Dream Car</h1>
+    <p class="hero-subtitle">Monitore e compare os carros dos seus sonhos para tomar a melhor decisão de compra</p>
+    <div class="hero-buttons">
+      <a (click)="handleStartClick()" class="btn btn-primary btn-lg" style="cursor: pointer;">Começar Agora</a>
+      <a href="#features" class="btn btn-outline-light btn-lg ms-3">Saiba Mais</a>
+    </div>
   </div>
+  <div class="hero-overlay"></div>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="features-section">
+  <div class="container">
+    <h2 class="section-title">Por que escolher o Dream Car?</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <i class="bi bi-graph-up-arrow"></i>
+        <h3>Comparação Inteligente</h3>
+        <p>Compare preços, especificações e avaliações de diferentes modelos para tomar a melhor decisão.</p>
+      </div>
+      <div class="feature-card">
+        <i class="bi bi-currency-dollar"></i>
+        <h3>Preços Atualizados</h3>
+        <p>Acesso a valores atualizados da tabela FIPE e análise de mercado em tempo real.</p>
+      </div>
+      <div class="feature-card">
+        <i class="bi bi-clock-history"></i>
+        <h3>Histórico Detalhado</h3>
+        <p>Acompanhe a evolução dos preços e mantenha um registro completo dos carros que você deseja.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="how-it-works-section">
+  <div class="container">
+    <h2 class="section-title">Como Funciona</h2>
+    <div class="steps-container">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Registre seu Carro</h3>
+        <p>Adicione os carros que você deseja à sua lista de monitoramento.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Compare Preços</h3>
+        <p>Analise valores de mercado e tendências de preços ao longo do tempo.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Acompanhe o Histórico</h3>
+        <p>Monitore a evolução dos preços e mantenha um registro completo dos seus carros desejados.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-content">
+      <h2>Pronto para começar?</h2>
+      <p>Comece a monitorar os carros dos seus sonhos agora mesmo.</p>
+      <a (click)="handleStartClick()" class="btn btn-primary btn-lg" style="cursor: pointer;">Começar Agora</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <i class="bi bi-car-front-fill"></i>
+        <span>Dream Car</span>
+      </div>
+
+      <div class="footer-social">
+        <a href="#"><i class="bi bi-github"></i></a>
+        <a href="#"><i class="bi bi-linkedin"></i></a>
+        <a href="#"><i class="bi bi-envelope"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Paulo Vitor Rosendo. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>

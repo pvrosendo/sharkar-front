@@ -1,81 +1,96 @@
 <!-- componente para registrar novos carros -->
 <app-navbar></app-navbar>
-<div justify-content-center class="container">
-  <h1 class="text-center mb-5">Registrar novo carro</h1>
-  <form [formGroup]="carForm" class="mb-3 justify-content-center">
-    <!-- CAMPO DE MARCA -->
-    <div class="form-group col-md-6">
-      <label for="brand" class="form-label">Qual a marca do carro?</label>
-      <select id="brand" class="form-select" formControlName="brand" (change)="onBrandChange()" >
-        <option value="" disable selected>Selecione a marca</option>
-        <option *ngFor="let brand of brands" [value]="brand.brandId"> {{ brand.brandName }}</option>
-      </select>
-    </div>
-  
-    <!-- CAMPO DE MODELO -->
-    <div class="form-group col-md-6">
-        <label for="model">Modelo</label>
-        <select id="model" class="form-select" formControlName="model" (change)="onModelChange()">
-          <option value="" disable selected>Selecione o modelo</option>
-          <option *ngFor="let model of models" [value]="model.modelId"> {{ model.modelName }}</option>
-        </select>
-    </div>
-  
-    <!-- CAMPO DE ANO -->
-    <div class="form-group col-md-6">
-        <label for="year">Year</label>
-        <select id="year" class="form-select" formControlName="year" (change)="onYearChange()">
-          <option value="" disable selected>Selecione o ano</option>
-          <option *ngFor="let year of years" [value]="year.yearId"> {{ year.yearValue }}</option>
-        </select>
-    </div>
-  
-    <!-- CAMPO DE PREÇO -->
-    <div class="form-group col-md-6">
-      <label for="price">Preço</label>
-      <input 
-        id="price" 
-        type="string" 
-        class="form-control" 
-        placeholder="" 
-        formControlName="price" 
-        readonly
-      />
-      <small class="form-text text-muted">Valor automático da tabela FIPE</small>
+<div class="container-register-car">
+  <div class="content-wrapper">
+    <div class="card-register-car">
+      <h1 class="text-center mb-5">Registrar novo carro</h1>
+      <form [formGroup]="carForm" class="mb-3 justify-content-center">
+        <!-- CAMPO DE MARCA -->
+        <div class="form-group col-md-6">
+          <label for="brand" class="form-label">Qual a marca do carro?</label>
+          <select id="brand" class="form-select" formControlName="brand" (change)="onBrandChange()" >
+            <option value="" disable selected>Selecione a marca</option>
+            <option *ngFor="let brand of brands" [value]="brand.brandId"> {{ brand.brandName }}</option>
+          </select>
+        </div>
+      
+        <!-- CAMPO DE MODELO -->
+        <div class="form-group col-md-6">
+            <label for="model">Modelo</label>
+            <select id="model" class="form-select" formControlName="model" (change)="onModelChange()">
+              <option value="" disable selected>Selecione o modelo</option>
+              <option *ngFor="let model of models" [value]="model.modelId"> {{ model.modelName }}</option>
+            </select>
+        </div>
+      
+        <!-- CAMPO DE ANO -->
+        <div class="form-group col-md-6">
+            <label for="year">Year</label>
+            <select id="year" class="form-select" formControlName="year" (change)="onYearChange()">
+              <option value="" disable selected>Selecione o ano</option>
+              <option *ngFor="let year of years" [value]="year.yearId"> {{ year.yearValue }}</option>
+            </select>
+        </div>
+      
+        <!-- CAMPO DE PREÇO -->
+        <div class="form-group col-md-6">
+          <label for="price">Preço</label>
+          <input 
+            id="price" 
+            type="string" 
+            class="form-control" 
+            placeholder="" 
+            formControlName="price" 
+            readonly
+          />
+          <small class="form-text text-muted">Valor automático da tabela FIPE</small>
+        </div>
+    
+        <!-- CAMPO DE COMBUSTÍVEL -->
+        <div class="form-group col-md-6">
+          <label for="fuel">Combustível</label>
+          <input 
+            id="fuel" 
+            type="string" 
+            class="form-control" 
+            placeholder="" 
+            formControlName="fuel" 
+            readonly
+          />
+        </div>
+    
+        <!-- CAMPO DO MÊS DE REFERÊNCIA -->
+        <div class="form-group col-md-6">
+          <label for="referenceMonth">Mês de Referência</label>
+          <input 
+            id="referenceMonth" 
+            type="string" 
+            class="form-control" 
+            placeholder="" 
+            formControlName="referenceMonth" 
+            readonly
+          />
+        </div>
+    
+        <button 
+          [disabled]="!carForm.valid"
+          (click)="SubmitForm()" 
+          class="btn btn-success mt-3"> 
+            Adicionar carro
+        </button>
+      </form>
     </div>
 
-    <!-- CAMPO DE COMBUSTÍVEL -->
-    <div class="form-group col-md-6">
-      <label for="fuel">Combustível</label>
-      <input 
-        id="fuel" 
-        type="string" 
-        class="form-control" 
-        placeholder="" 
-        formControlName="fuel" 
-        readonly
-      />
+    <div class="car-image-container">
+      <div class="car-image-wrapper">
+        <div class="image-content">
+          <img [src]="carImageUrl" alt="Imagem do carro" class="car-image" *ngIf="carImageUrl">
+          <div class="image-placeholder" *ngIf="!carImageUrl">
+            <i class="bi bi-car-front"></i>
+            <p>Selecione um carro para ver a imagem</p>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <!-- CAMPO DO MÊS DE REFERÊNCIA -->
-    <div class="form-group col-md-6">
-      <label for="referenceMonth">Mês de Referência</label>
-      <input 
-        id="referenceMonth" 
-        type="string" 
-        class="form-control" 
-        placeholder="" 
-        formControlName="referenceMonth" 
-        readonly
-      />
-    </div>
-
-    <button 
-      [disabled]="!carForm.valid"
-      (click)="SubmitForm()" 
-      class="btn btn-success mt-3"> 
-        Adicionar carro
-    </button>
-  </form>
+  </div>
 </div>
-

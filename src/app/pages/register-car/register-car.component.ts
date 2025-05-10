@@ -2,9 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CarService } from '../../_services/car.service';
 import { FipeBrandModels } from '../../_models/brand';
-import { FipeCarModels } from '../../_models/model';
+import { FipeCarModels } from '../../_models/fipeCar';
 import { FipeYearModels } from '../../_models/year';
 import { FipeInfoModel } from '../../_models/car';
+import { CarFipeService } from '../../_services/carFipe.service';
 
 @Component({
   selector: 'app-register-car',
@@ -25,12 +26,18 @@ export class RegisterCarComponent implements OnInit{
   fipeInfoModel: any = {model: '', brand: '', year: '', fuel: '', price: '', referenceMonth: ''};
 
   carForm: any = new FormGroup({});
+  carImageUrl: string = '';
 
-  constructor(private fb: FormBuilder, private carService: CarService) { }
+  constructor(
+    private fb: FormBuilder, 
+    private carService: CarService, 
+    private carFipeService: CarFipeService
+  ) { }
 
   ngOnInit(): void {
     this.loadBrands();
     this.initializeForm();
+    this.updateCarImage();
   }
 
   initializeForm(): void {
@@ -45,7 +52,7 @@ export class RegisterCarComponent implements OnInit{
   }
 
   loadBrands(): void {
-    this.carService.getAllBrands().subscribe({
+    this.carFipeService.getAllBrands().subscribe({
       next: (response) => {
         this.brands = response;
       },
@@ -56,7 +63,7 @@ export class RegisterCarComponent implements OnInit{
   }
 
   loadModels(brandId: Number): void {
-    this.carService.getAllModelsByBrand(brandId).subscribe({
+    this.carFipeService.getAllModelsByBrand(brandId).subscribe({
       next: (response) => {
         this.models = response;
       },
@@ -67,7 +74,7 @@ export class RegisterCarComponent implements OnInit{
   }
 
   loadYears(brandId: Number, modelId: Number): void {
-    this.carService.getAllYearsByBrandAndModel(brandId, modelId).subscribe({
+    this.carFipeService.getAllYearsByBrandAndModel(brandId, modelId).subscribe({
       next: (response) => {
         this.years = response;
       },
@@ -78,7 +85,7 @@ export class RegisterCarComponent implements OnInit{
   }
 
   loadInfoFipe(brandId: Number, modelId: Number, yearId: String): void {
-    this.carService.getAllInfoCarByBrandModelAndYear(brandId, modelId, yearId).subscribe(
+    this.carFipeService.getAllInfoCarByBrandModelAndYear(brandId, modelId, yearId).subscribe(
       (data: any) => {
         if (data && data.price && data.fuel && data.referenceMonth) {
           this.carForm.get('price')?.setValue(data.price);
@@ -108,6 +115,7 @@ export class RegisterCarComponent implements OnInit{
       this.models = [];
       this.carForm.get('model')?.setValue('');
     }
+    this.updateCarImage();
   }
 
   onModelChange() {
@@ -122,6 +130,7 @@ export class RegisterCarComponent implements OnInit{
       this.years = [];
       this.carForm.get('year')?.setValue(0);
     }
+    this.updateCarImage();
   }
 
   onYearChange() {
@@ -133,6 +142,30 @@ export class RegisterCarComponent implements OnInit{
       this.loadInfoFipe(brandId, modelId, yearId);
     } else {
       this.car = {model: '', brand: '', year: '', fuel: '', price: '', referenceMonth: ''};
+    }
+    this.updateCarImage();
+  }
+
+  private updateCarImage() {
+    const brand = this.carForm.get('brand')?.value;
+    const model = this.carForm.get('model')?.value;
+    const year = this.carForm.get('year')?.value;
+
+    if (brand && model && year) {
+      // TODO: implements search image
+      this.carImageUrl = '';
+      
+      // this.carService.getCarImage(brand, model, year).subscribe(
+      //   (imageUrl) => {
+      //     this.carImageUrl = imageUrl;
+      //   },
+      //   (error) => {
+      //     console.error('Erro ao buscar imagem:', error);
+      //     this.carImageUrl = '/assets/images/default-car.jpg';
+      //   }
+      // );
+    } else {
+      this.carImageUrl = '/assets/images/default-car.jpg';
     }
   }
 

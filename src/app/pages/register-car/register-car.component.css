@@ -1,0 +1,118 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container-register-car {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 2rem;
+  background-image: 
+    radial-gradient(circle at 0% 0%, rgba(63, 81, 181, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 100% 100%, rgba(255, 64, 129, 0.15) 0%, transparent 50%),
+    linear-gradient(135deg, var(--background-dark) 0%, var(--primary-dark) 100%);
+  flex: 1;
+  overflow: hidden;
+}
+
+.content-wrapper {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: flex-start;
+}
+
+.card-register-car {
+  flex: 1;
+  padding: 24px;
+  transition: transform 0.2s ease-in-out;
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  min-width: 300px;
+  max-width: 600px;
+}
+
+.car-image-container {
+  flex: 1;
+  min-width: 300px;
+  max-width: 600px;
+  height: 100%;
+}
+
+.car-image-wrapper {
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  height: 100%;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+.image-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.car-image {
+  max-width: 100%;
+  max-height: 350px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+  display: block;
+}
+
+.image-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  text-align: center;
+  padding: 2rem;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 10px;
+}
+
+.image-placeholder i {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  color: #999;
+}
+
+.image-placeholder p {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .content-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .car-image-container {
+    width: 100%;
+    margin-top: 2rem;
+  }
+}

@@ -7,16 +7,17 @@ import { AuthService } from './auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class CarService {
+export class CarFipeService {
 
-  baseUrl: string = environment.apiUrl;
+  fipeUrl: string = environment.apiUrlFipe;
  
   constructor(private http: HttpClient, private authService: AuthService) { }
 
-  getAllCars(){
+
+  getAllBrands(){
     const token = this.authService.getToken()
     if (token) {
-      var request = this.http.get(this.baseUrl, {
+      var request = this.http.get(this.fipeUrl + "/brands", {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -26,10 +27,10 @@ export class CarService {
     return throwError(() => new Error("Token not found"));
   }
 
-  getCarById(id: Number) {
+  getAllModelsByBrand(brandId: Number){
     const token = this.authService.getToken()
     if (token) {
-      var request = this.http.get(`${this.baseUrl}/${id}`, {
+      var request = this.http.get(this.fipeUrl + "/models?brandId=" + brandId, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -39,11 +40,11 @@ export class CarService {
     return throwError(() => new Error("Token not found"));
   }
 
-  addCar(car: any) {
+  getAllYearsByBrandAndModel(brandId: Number, modelId: Number){
 
     const token = this.authService.getToken()
     if (token) {
-      var request = this.http.post(this.baseUrl, car, {
+      var request = this.http.get(this.fipeUrl + "/years?brandId=" + brandId + "&modelId=" + modelId, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -54,25 +55,11 @@ export class CarService {
 
   }
 
-  updateCar(id: Number, car: any) {
+  getAllInfoCarByBrandModelAndYear(brandId: Number, modelId: Number, yearId: String){
 
     const token = this.authService.getToken()
     if (token) {
-      var request = this.http.put(`${this.baseUrl}/${id}`, car, {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
-      return request;
-    }
-    return throwError(() => new Error("Token not found"));
-  }
-
-  deleteCar(id: Number) {
-
-    const token = this.authService.getToken()
-    if (token) {
-      var request = this.http.delete(`${this.baseUrl}/${id}`, {
+      var request = this.http.get(this.fipeUrl + "/info?brandId=" + brandId + "&modelId=" + modelId + "&yearId=" + yearId, {
         headers: {
           'Authorization': `Bearer ${token}`
         }

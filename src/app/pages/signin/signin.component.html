@@ -1,20 +1,31 @@
 <div class="signin-container">
+  <div class="back-button-container">
+    <button class="btn btn-outline-secondary" routerLink="/">
+      <i class="bi bi-arrow-left"></i> Voltar para Home
+    </button>
+  </div>
   <div class="custom-card">
     <div class="card-header">
       <h2>{{ isSignUp ? 'Criar novo usuário' : 'Acessar perfil' }}</h2>
+      <p class="text-muted">
+        {{ isSignUp ? 
+          'Crie sua conta para registrar e gerenciar seus carros favoritos' : 
+          'Faça login para acessar todas as funcionalidades do Dream Car' 
+        }}
+      </p>
     </div>
     <div class="card-body">
       <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
         <div class="form-group" *ngIf="isSignUp">
-          <label for="name">Nome Completo</label>
+          <label for="fullName">Nome Completo</label>
           <input
             type="text"
-            id="name"
-            formControlName="name"
+            id="fullName"
+            formControlName="fullName"
             class="form-control"
             placeholder="Digite seu nome completo"
           >
-          <div class="error-message" *ngIf="signinForm.get('name')?.invalid && signinForm.get('name')?.touched">
+          <div class="error-message" *ngIf="signinForm.get('fullName')?.invalid && signinForm.get('fullName')?.touched">
             Nome completo é obrigatório
           </div>
         </div>
@@ -33,7 +44,7 @@
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" *ngIf="isSignUp">
           <label for="email">Email</label>
           <input
             type="email"
@@ -46,6 +57,22 @@
             Por favor, digite um endereço de email válido
           </div>
         </div>
+
+        
+        <div class="form-group" *ngIf="!isSignUp">
+          <label for="usernameOrEmail">Nome de usuário ou email</label>
+          <input
+            type="text"
+            id="usernameOrEmail"
+            formControlName="usernameOrEmail"
+            class="form-control"
+            placeholder="Digite seu nome de usuário ou email"
+          >
+          <div class="error-message" *ngIf="signinForm.get('usernameOrEmail')?.invalid && signinForm.get('usernameOrEmail')?.touched">
+            Nome de usuário ou email é obrigatório
+          </div>
+        </div>
+
 
         <div class="form-group">
           <label for="password">Senha</label>
