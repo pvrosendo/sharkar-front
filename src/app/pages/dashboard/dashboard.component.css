@@ -19,7 +19,7 @@
   z-index: 1;
 }
 
-.view-cars-container {
+.dashboard-container {
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -28,12 +28,12 @@
   color: #fff;
 }
 
-.view-cars-header {
+.dashboard-header {
   margin-bottom: 2rem;
   text-align: center;
 }
 
-.view-cars-header h1 {
+.dashboard-header h1 {
   font-size: 2.5rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
@@ -42,54 +42,87 @@
   -webkit-text-fill-color: transparent;
 }
 
-.list-cars {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+.quick-actions {
+  margin-bottom: 3rem;
 }
 
-.car-card {
+.action-card {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  height: 100%;
+  border: none;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 0.5rem;
-  padding: 1.5rem;
-  margin-bottom: 1rem;
-  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.car-card:hover {
+.action-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
   background: rgba(255, 255, 255, 0.1);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.car-info {
-  color: rgba(255, 255, 255, 0.9);
+.action-card .card-body {
+  padding: 2rem;
+  text-align: center;
+  color: #fff;
 }
 
-.car-info h3 {
+.action-card i {
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.action-card h3 {
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
   color: #fff;
 }
 
-.car-info p {
-  margin: 0.25rem 0;
+.action-card p {
   color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 0;
+}
+
+.dashboard-section {
+  margin-bottom: 3rem;
+}
+
+.dashboard-section h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.alert {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.alert i {
+  font-size: 1.25rem;
+  color: #fff;
 }
 
 @media (max-width: 768px) {
-  .view-cars-container {
+  .dashboard-container {
     padding: 1rem;
   }
 
-  .view-cars-header h1 {
+  .dashboard-header h1 {
     font-size: 2rem;
   }
 
-  .car-card {
-    padding: 1rem;
+  .action-card .card-body {
+    padding: 1.5rem;
   }
-}
+} 

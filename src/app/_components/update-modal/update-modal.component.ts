@@ -32,8 +32,6 @@ export class UpdateModalComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('Modal de atualização inicializado com carro:', this.car);
-    // Preenche o formulário com os dados do carro
     this.updateForm.patchValue({
       brand: this.car.brand.toString(),
       model: this.car.model,
@@ -62,11 +60,9 @@ export class UpdateModalComponent implements OnInit {
         registerDate: this.updateForm.value.registerDate
       };
       
-      console.log('Atualizando carro:', updatedCar);
       
       this.carService.updateCar(this.car.id, updatedCar).subscribe({
         next: (response) => {
-          console.log('Carro atualizado com sucesso:', response);
           this.carUpdated.emit();
           this.closeModal();
         },

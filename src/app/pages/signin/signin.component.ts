@@ -74,7 +74,7 @@ export class SigninComponent implements OnInit {
         }
 
         this.authService.signIn(userCredentials).subscribe((res: any) => {
-          this.router.navigate(['/view-cars']);
+          this.router.navigate(['/dashboard']);
         });
       }
     }

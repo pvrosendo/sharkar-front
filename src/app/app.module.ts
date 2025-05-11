@@ -13,7 +13,6 @@ import { NavbarComponent } from './_components/navbar/navbar.component';
 import { FooterComponent } from './_components/footer/footer.component';
 import { RegisterCarComponent } from './pages/register-car/register-car.component';
 import { ViewCarsComponent } from './pages/view-cars/view-cars.component';
-import { HomeComponent } from './pages/home/home.component';
 import { CarDComponent } from './_components/car-d/car-d.component';
 import { ReactiveFormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http';
@@ -22,7 +21,8 @@ import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { UpdateModalComponent } from './_components/update-modal/update-modal.component';
 import { SigninComponent } from './pages/signin/signin.component';
-
+import { LandingComponent } from './pages/landing/landing.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 registerLocaleData(localePt, 'pt-BR');
 
 @NgModule({
@@ -32,11 +32,12 @@ registerLocaleData(localePt, 'pt-BR');
     FooterComponent,
     RegisterCarComponent,
     ViewCarsComponent,
-    HomeComponent,
     CarDComponent,
     CarModalComponent,
     UpdateModalComponent,
-    SigninComponent
+    SigninComponent,
+    LandingComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

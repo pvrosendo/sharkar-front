@@ -32,7 +32,7 @@ export class ViewCarsComponent implements OnInit {
 
   openUpdateModal(data: {id: Number, car: Car}) {
     console.log('Abrindo modal de atualização', data);
-    // Crie uma cópia do objeto para evitar referências compartilhadas
+    
     this.carToUpdate = {
       id: data.id,
       car: {...data.car}
@@ -41,7 +41,7 @@ export class ViewCarsComponent implements OnInit {
   
   closeUpdateModal() {
     this.carToUpdate = null;
-    this.refreshCars(); // Atualiza a lista após editar
+    this.refreshCars();
   }
 
 }
