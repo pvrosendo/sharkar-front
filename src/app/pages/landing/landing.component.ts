@@ -17,8 +17,8 @@ export class LandingComponent implements OnInit {
   ngOnInit(): void {}
 
   handleStartClick(): void {
-    if (this.authService.isAuthenticated()) {
-      this.router.navigate(['/register-cars']);
+    if (this.authService.validateToken()) {
+      this.router.navigate(['/dashboard']);
     } else {
       this.router.navigate(['/signin']);
     }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
@@ -8,62 +8,43 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
-  private readonly TOKEN_KEY = 'auth_token';
-  private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
+  
+  private readonly baseUrlAuth = environment.apiUrlAuth;
 
   constructor(
-    private router: Router,
-    private http: HttpClient
-  ) {
-    this.checkToken();
+    private http: HttpClient,
+    private router: Router
+  ) {}
+
+  login(credentials: { username: string; password: string }): Observable<any> {
+    return this.http.post(`${this.baseUrlAuth}/signin`, credentials, {
+      withCredentials: true // Importante para cookies
+    }).pipe(
+      tap(() => {
+        // Após login bem-sucedido, redireciona para dashboard
+        this.router.navigate(['/dashboard']);
+      })
+    );
   }
 
-  private checkToken(): void {
-    const token = this.getToken();
-    if (token) {
-      this.http.get(`${environment.apiUrlAuth}/validate-token`, {
-        headers: { Authorization: `${token}` }
-      }).subscribe({
-        next: () => {
-          this.isAuthenticatedSubject.next(true);
-        },
-        error: () => {
-          this.removeToken();
-          this.isAuthenticatedSubject.next(false);
-        }
-      });
-    } else {
-      this.isAuthenticatedSubject.next(false);
-    }
+  register(user: any){
+    return this.http.post(this.baseUrlAuth + "/createUser", user);
   }
 
-  setToken(token: string): void {
-    localStorage.setItem(this.TOKEN_KEY, token);
-    this.isAuthenticatedSubject.next(true);
+  logout(): Observable<any> {
+    return this.http.post(`${this.baseUrlAuth}/signout`, {}, {
+      withCredentials: true
+    }).pipe(
+      tap(() => {
+        // Após logout, redireciona para login
+        this.router.navigate(['/login']);
+      })
+    );
   }
 
-  removeToken(): void {
-    localStorage.removeItem(this.TOKEN_KEY);
-    this.isAuthenticatedSubject.next(false);
-  }
-
-  getToken(): string | null {
-    return localStorage.getItem(this.TOKEN_KEY);
-  }
-
-  isAuthenticated(): boolean {
-    return this.isAuthenticatedSubject.value;
-  }
-
-  isAuthenticatedObservable(): Observable<boolean> {
-    return this.isAuthenticatedSubject.asObservable();
-  }
-
-  handleAuthRedirect(): void {
-    if (this.isAuthenticated()) {
-      this.router.navigate(['/register-cars']);
-    } else {
-      this.router.navigate(['/signin']);
-    }
+  validateToken(): Observable<boolean> {
+    return this.http.get<boolean>(`${this.baseUrlAuth}/validate-token`, {
+      withCredentials: true
+    });
   }
 } 

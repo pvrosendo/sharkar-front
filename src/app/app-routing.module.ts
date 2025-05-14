@@ -5,13 +5,34 @@ import { RegisterCarComponent } from './pages/register-car/register-car.componen
 import { SigninComponent } from './pages/signin/signin.component';
 import { LandingComponent } from './pages/landing/landing.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { AuthGuard } from './_guards/auth.guard';
 
 const routes: Routes = [
-  {path: '', component: LandingComponent},
-  {path: 'view-cars', component: ViewCarsComponent},
-  {path: 'register-cars', component: RegisterCarComponent},
-  {path: 'signin', component: SigninComponent},
-  {path: 'dashboard', component: DashboardComponent}
+  {
+    path: '', 
+    component: LandingComponent,
+    pathMatch: 'full'
+
+  },
+  {
+    path: 'signin', 
+    component: SigninComponent
+  },
+  {
+    path: 'dashboard', 
+    component: DashboardComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'view-cars', 
+    component: ViewCarsComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'register-cars', 
+    component: RegisterCarComponent,
+    canActivate: [AuthGuard]
+  }
 ];
 
 @NgModule({

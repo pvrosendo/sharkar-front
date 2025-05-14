@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../../_services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { UserCredentials } from '../../_models/userCredentials';
 
@@ -50,7 +50,7 @@ export class SigninComponent implements OnInit {
     if (this.signinForm.valid) {
 
       if (this.isSignUp) {
-        this.authService.register(this.signinForm.value).subscribe((res: any) => {
+        this.authService.register(this.signinForm.value).subscribe(() => {
           // TODO: Implement popup message success
           this.signinForm.reset();
         });
@@ -73,7 +73,7 @@ export class SigninComponent implements OnInit {
           password: this.signinForm.get('password')?.value
         }
 
-        this.authService.signIn(userCredentials).subscribe((res: any) => {
+        this.authService.login(userCredentials).subscribe(() => { 
           this.router.navigate(['/dashboard']);
         });
       }

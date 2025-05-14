@@ -15,7 +15,7 @@ import { RegisterCarComponent } from './pages/register-car/register-car.componen
 import { ViewCarsComponent } from './pages/view-cars/view-cars.component';
 import { CarDComponent } from './_components/car-d/car-d.component';
 import { ReactiveFormsModule } from '@angular/forms'
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CarModalComponent } from './_components/car-modal/car-modal.component';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
@@ -23,6 +23,7 @@ import { UpdateModalComponent } from './_components/update-modal/update-modal.co
 import { SigninComponent } from './pages/signin/signin.component';
 import { LandingComponent } from './pages/landing/landing.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 registerLocaleData(localePt, 'pt-BR');
 
 @NgModule({
@@ -52,7 +53,14 @@ registerLocaleData(localePt, 'pt-BR');
     MatFormFieldModule
   ],
   providers: [
-    { provide: LOCALE_ID, useValue: 'pt' }
+    { 
+      provide: LOCALE_ID, useValue: 'pt'
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

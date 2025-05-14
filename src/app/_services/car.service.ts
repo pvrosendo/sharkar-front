@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
 import { HttpClient } from '@angular/common/http';
-import { throwError } from 'rxjs';
-import { AuthService } from './auth.service';
+import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,72 +13,24 @@ export class CarService {
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   getAllCars(){
-    const token = this.authService.getToken()
-    if (token) {
-      var request = this.http.get(this.baseUrl, {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
-      return request;
-    }
-    return throwError(() => new Error("Token not found"));
+    return this.http.get(this.baseUrl);
   }
 
   getCarById(id: Number) {
-    const token = this.authService.getToken()
-    if (token) {
-      var request = this.http.get(`${this.baseUrl}/${id}`, {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
-      return request;
-    }
-    return throwError(() => new Error("Token not found"));
+    return this.http.get(`${this.baseUrl}/${id}`);
   }
 
   addCar(car: any) {
-
-    const token = this.authService.getToken()
-    if (token) {
-      var request = this.http.post(this.baseUrl, car, {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
-      return request;
-    }
-    return throwError(() => new Error("Token not found"));
-
+    return this.http.post(this.baseUrl, car);
   }
 
   updateCar(id: Number, car: any) {
 
-    const token = this.authService.getToken()
-    if (token) {
-      var request = this.http.put(`${this.baseUrl}/${id}`, car, {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
-      return request;
-    }
-    return throwError(() => new Error("Token not found"));
+    return this.http.put(`${this.baseUrl}/${id}`, car);
   }
 
   deleteCar(id: Number) {
-
-    const token = this.authService.getToken()
-    if (token) {
-      var request = this.http.delete(`${this.baseUrl}/${id}`, {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
-      return request;
-    }
-    return throwError(() => new Error("Token not found"));
+    return this.http.delete(`${this.baseUrl}/${id}`);   
   }
   
 }
