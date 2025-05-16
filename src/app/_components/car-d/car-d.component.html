@@ -5,7 +5,9 @@
   <div class="card-body">
     <p><b>Marca: </b> {{ car.brand }}</p>
     <p><b>Ano: </b> {{ car.year }}</p>
-    <p><b>Preço: </b> R$ {{ car.price | number:'1.2-2':'pt-BR' }}</p>
+    <p><b>Preço: </b> {{ car.price}}</p>
+    <p><b>Combustível: </b> {{ car.fuel }}</p>
   </div>
   <button type="button" class="btn btn-primary" (click)="openExpensiveCarModal()" >Ver mais</button>
 </div>
+

@@ -15,13 +15,6 @@
   <app-car-modal 
     [car]="expensiveCar" 
     (close)="closeModal()" 
-    (carDeleted)="refreshCars()"
-    (carToUpdate)="openUpdateModal($event)">
+    (carDeleted)="refreshCars()">
   </app-car-modal>
-
-  <app-update-modal 
-    *ngIf="carToUpdate"
-    [car]="carToUpdate.car"
-    (close)="closeUpdateModal()">
-  </app-update-modal>
 </div>

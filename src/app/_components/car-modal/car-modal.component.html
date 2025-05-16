@@ -1,22 +1,58 @@
-<div class="modal" tabindex="-1" *ngIf="car">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width: 80%; width: 800px;">
+<div class="modal-overlay" *ngIf="car">
+  <div class="modal-container">
+    <div class="modal-header">
+      <div class="header-content">
+        <i class="bi bi-car-front-fill header-icon"></i>
+        <h2>{{ car.model }}</h2>
+      </div>
+      <button class="close-button" (click)="closeModal()" title="Fechar">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">{{ car.model }}</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()"></button>
+      <div class="info-group">
+        <div class="info-item">
+          <i class="bi bi-trademark"></i>
+          <div class="info-text">
+            <span class="info-label">Marca</span>
+            <span class="info-value">{{ car.brand }}</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <i class="bi bi-calendar-event"></i>
+          <div class="info-text">
+            <span class="info-label">Ano</span>
+            <span class="info-value">{{ car.year }}</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <i class="bi bi-currency-dollar"></i>
+          <div class="info-text">
+            <span class="info-label">Preço</span>
+            <span class="info-value">{{ car.price }}</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <i class="bi bi-fuel-pump"></i>
+          <div class="info-text">
+            <span class="info-label">Motor</span>
+            <span class="info-value">{{ car.fuel }}</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <i class="bi bi-clock-history"></i>
+          <div class="info-text">
+            <span class="info-label">Última atualização</span>
+            <span class="info-value">{{ car.referenceMonth }}</span>
+          </div>
+        </div>
       </div>
-      <div class="modal-body">
-        <p><b>Marca: </b> {{ car.brand }}</p>
-        <p><b>Ano: </b> {{ car.year }}</p>
-        <p><b>Preço: </b> R$ {{ car.price | number:'1.2-2':'pt-BR' }}</p>
-        <p><b>Motor: </b> {{ car.displacement }} </p>
-        <p><b>Tipo de câmbio: </b> {{ car.carType }}</p>
-        <p><b>Última atualização: </b> {{ car.registerDate }}</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="DeleteCar(car.id)">Deletar</button>
-        <button type="button" class="btn btn-secondary" (click)="UpdateCar(car.id, car)" >Editar</button>
-      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-delete" (click)="DeleteCar(car.id)">
+        <i class="bi bi-trash"></i>
+        Deletar
+      </button>
     </div>
   </div>
 </div>

@@ -105,11 +105,10 @@ export class RegisterCarComponent implements OnInit{
   }
 
   onBrandChange() {
-    const brandId = this.carForm.get('brand')?.value;
+    const brandValue = this.carForm.get('brand')?.value;
     
-    if (brandId) {
-      this.loadModels(brandId);
-      
+    if (brandValue && brandValue.id) {
+      this.loadModels(brandValue.id);
       this.carForm.get('model')?.setValue('');
     } else {
       this.models = [];
@@ -119,27 +118,26 @@ export class RegisterCarComponent implements OnInit{
   }
 
   onModelChange() {
-    const modelId = this.carForm.get('model')?.value;
+    const modelValue = this.carForm.get('model')?.value;
     
-    if (modelId) {
-      const brandId = this.carForm.get('brand')?.value;
-      this.loadYears(brandId, modelId);
-      
-      this.carForm.get('year')?.setValue(0);
+    if (modelValue && modelValue.id) {
+      const brandValue = this.carForm.get('brand')?.value;
+      this.loadYears(brandValue.id, modelValue.id);
+      this.carForm.get('year')?.setValue('');
     } else {
       this.years = [];
-      this.carForm.get('year')?.setValue(0);
+      this.carForm.get('year')?.setValue('');
     }
     this.updateCarImage();
   }
 
   onYearChange() {
-    const brandId = this.carForm.get('brand')?.value;
-    const modelId = this.carForm.get('model')?.value;
-    const yearId = this.carForm.get('year')?.value;
+    const brandValue = this.carForm.get('brand')?.value;
+    const modelValue = this.carForm.get('model')?.value;
+    const yearValue = this.carForm.get('year')?.value;
     
-    if (brandId && modelId && yearId) {
-      this.loadInfoFipe(brandId, modelId, yearId);
+    if (brandValue?.id && modelValue?.id && yearValue?.id) {
+      this.loadInfoFipe(brandValue.id, modelValue.id, yearValue.id);
     } else {
       this.car = {model: '', brand: '', year: '', fuel: '', price: '', referenceMonth: ''};
     }
@@ -147,33 +145,28 @@ export class RegisterCarComponent implements OnInit{
   }
 
   private updateCarImage() {
-    const brand = this.carForm.get('brand')?.value;
-    const model = this.carForm.get('model')?.value;
-    const year = this.carForm.get('year')?.value;
+    const brandValue = this.carForm.get('brand')?.value;
+    const modelValue = this.carForm.get('model')?.value;
+    const yearValue = this.carForm.get('year')?.value;
 
-    if (brand && model && year) {
+    if (brandValue?.id && modelValue?.id && yearValue?.id) {
       // TODO: implements search image
       this.carImageUrl = '';
-      
-      // this.carService.getCarImage(brand, model, year).subscribe(
-      //   (imageUrl) => {
-      //     this.carImageUrl = imageUrl;
-      //   },
-      //   (error) => {
-      //     console.error('Erro ao buscar imagem:', error);
-      //     this.carImageUrl = '/assets/images/default-car.jpg';
-      //   }
-      // );
     } else {
       this.carImageUrl = '/assets/images/default-car.jpg';
     }
   }
 
   SubmitForm(): void {
-
     if (this.carForm.valid) {
       const formValues = this.carForm.getRawValue();
+      formValues.username = sessionStorage.getItem('username');
       
+      // Substituir os objetos por seus nomes
+      formValues.brand = formValues.brand.name;
+      formValues.model = formValues.model.name;
+      formValues.year = formValues.year.name;
+
       this.carService.addCar(formValues).subscribe(
         (response) => {
           console.log('Carro registrado com sucesso:', response);

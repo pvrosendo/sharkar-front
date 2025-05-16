@@ -19,7 +19,6 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CarModalComponent } from './_components/car-modal/car-modal.component';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
-import { UpdateModalComponent } from './_components/update-modal/update-modal.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { LandingComponent } from './pages/landing/landing.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -35,7 +34,6 @@ registerLocaleData(localePt, 'pt-BR');
     ViewCarsComponent,
     CarDComponent,
     CarModalComponent,
-    UpdateModalComponent,
     SigninComponent,
     LandingComponent,
     DashboardComponent

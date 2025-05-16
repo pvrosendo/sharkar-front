@@ -12,25 +12,23 @@ export class CarService {
  
   constructor(private http: HttpClient, private authService: AuthService) { }
 
+
+  addCar(car: any) {
+    return this.http.post(this.baseUrl, car);
+  }
+
+
+  deleteCar(id: Number) {
+    return this.http.delete(this.baseUrl, {params: {id: id.toString()}});   
+  }
+
   getAllCars(){
-    return this.http.get(this.baseUrl);
+    const username = sessionStorage.getItem('username');
+    return this.http.get(this.baseUrl, {params: {username: username || ''}});
   }
 
   getCarById(id: Number) {
     return this.http.get(`${this.baseUrl}/${id}`);
   }
 
-  addCar(car: any) {
-    return this.http.post(this.baseUrl, car);
-  }
-
-  updateCar(id: Number, car: any) {
-
-    return this.http.put(`${this.baseUrl}/${id}`, car);
-  }
-
-  deleteCar(id: Number) {
-    return this.http.delete(`${this.baseUrl}/${id}`);   
-  }
-  
 }

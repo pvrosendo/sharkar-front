@@ -23,6 +23,7 @@ export class AuthService {
       tap(() => {
         // Após login bem-sucedido, redireciona para dashboard
         this.router.navigate(['/dashboard']);
+        sessionStorage.setItem('username', credentials.username);
       })
     );
   }
@@ -38,12 +39,19 @@ export class AuthService {
       tap(() => {
         // Após logout, redireciona para login
         this.router.navigate(['/login']);
+        sessionStorage.removeItem('username');
       })
     );
   }
 
   validateToken(): Observable<boolean> {
     return this.http.get<boolean>(`${this.baseUrlAuth}/validate-token`, {
+      withCredentials: true
+    });
+  }
+
+  refreshToken(username: string): Observable<any> {
+    return this.http.put(`${this.baseUrlAuth}/refresh/${username}`, {
       withCredentials: true
     });
   }

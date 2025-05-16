@@ -10,7 +10,7 @@
           <label for="brand" class="form-label">Qual a marca do carro?</label>
           <select id="brand" class="form-select" formControlName="brand" (change)="onBrandChange()" >
             <option value="" disable selected>Selecione a marca</option>
-            <option *ngFor="let brand of brands" [value]="brand.brandId"> {{ brand.brandName }}</option>
+            <option *ngFor="let brand of brands" [ngValue]="{id: brand.brandId, name: brand.brandName}"> {{ brand.brandName }}</option>
           </select>
         </div>
       
@@ -19,7 +19,7 @@
             <label for="model">Modelo</label>
             <select id="model" class="form-select" formControlName="model" (change)="onModelChange()">
               <option value="" disable selected>Selecione o modelo</option>
-              <option *ngFor="let model of models" [value]="model.modelId"> {{ model.modelName }}</option>
+              <option *ngFor="let model of models" [ngValue]="{id: model.modelId, name: model.modelName}"> {{ model.modelName }}</option>
             </select>
         </div>
       
@@ -28,7 +28,7 @@
             <label for="year">Year</label>
             <select id="year" class="form-select" formControlName="year" (change)="onYearChange()">
               <option value="" disable selected>Selecione o ano</option>
-              <option *ngFor="let year of years" [value]="year.yearId"> {{ year.yearValue }}</option>
+              <option *ngFor="let year of years" [ngValue]="{id: year.yearId, name: year.yearValue}"> {{ year.yearValue }}</option>
             </select>
         </div>
       

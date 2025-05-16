@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CarService} from '../../_services/car.service';
-import {Car} from '../../_models/car';
+import {Car, FipeInfoModel} from '../../_models/car';
 
 
 @Component({
@@ -13,7 +13,6 @@ export class ViewCarsComponent implements OnInit {
 
   cars: any[] = [];
   expensiveCar: Car | null = null;
-  carToUpdate: {id: Number, car: Car} | null = null;
 
   constructor(private carService: CarService) {}
 
@@ -30,18 +29,4 @@ export class ViewCarsComponent implements OnInit {
 
   closeModal() { this.expensiveCar = null; }
 
-  openUpdateModal(data: {id: Number, car: Car}) {
-    console.log('Abrindo modal de atualização', data);
-    
-    this.carToUpdate = {
-      id: data.id,
-      car: {...data.car}
-    };
-  }
-  
-  closeUpdateModal() {
-    this.carToUpdate = null;
-    this.refreshCars();
-  }
-
-}
+} 
