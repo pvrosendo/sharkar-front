@@ -1,0 +1,56 @@
+.car-card {
+  width: 100%;
+  min-width: 250px;
+  max-width: 300px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  transition: all 0.3s ease;
+}
+
+.car-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.car-card .card-header {
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+}
+
+.car-card .card-body {
+  padding: 1rem;
+}
+
+.car-card .card-body p {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.car-card .card-body p:last-child {
+  margin-bottom: 0;
+}
+
+.car-card .btn-primary {
+  width: 100%;
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.car-card .btn-primary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 768px) {
+  .car-card {
+    min-width: 200px;
+  }
+}
