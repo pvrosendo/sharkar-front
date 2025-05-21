@@ -160,12 +160,12 @@ export class RegisterCarComponent implements OnInit{
   SubmitForm(): void {
     if (this.carForm.valid) {
       const formValues = this.carForm.getRawValue();
-      formValues.username = sessionStorage.getItem('username');
+      formValues.username = localStorage.getItem('username');
       
-      // Substituir os objetos por seus nomes
       formValues.brand = formValues.brand.name;
       formValues.model = formValues.model.name;
       formValues.year = formValues.year.name;
+
 
       this.carService.addCar(formValues).subscribe(
         (response) => {

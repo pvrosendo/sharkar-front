@@ -23,7 +23,7 @@ export class CarService {
   }
 
   getAllCars(){
-    const username = sessionStorage.getItem('username');
+    const username = localStorage.getItem('username');
     return this.http.get(this.baseUrl, {params: {username: username || ''}});
   }
 

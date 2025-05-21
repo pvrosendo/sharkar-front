@@ -23,7 +23,7 @@ export class AuthService {
       tap(() => {
         // Após login bem-sucedido, redireciona para dashboard
         this.router.navigate(['/dashboard']);
-        sessionStorage.setItem('username', credentials.username);
+        localStorage.setItem('username', credentials.username);
       })
     );
   }
@@ -39,7 +39,7 @@ export class AuthService {
       tap(() => {
         // Após logout, redireciona para login
         this.router.navigate(['/login']);
-        sessionStorage.removeItem('username');
+        localStorage.removeItem('username');
       })
     );
   }
