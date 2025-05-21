@@ -1,4 +1,3 @@
-
 :host {
   display: block;
   min-height: 100vh;
@@ -111,6 +110,66 @@
 .alert i {
   font-size: 1.25rem;
   color: #fff;
+}
+
+.recent-car-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.recent-car-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.recent-car-card .card-body {
+  padding: 1.5rem;
+  color: #fff;
+}
+
+.recent-car-card .card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.recent-car-card .card-text {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.recent-car-card .text-muted {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.recent-car-card .car-price {
+  margin-top: 1rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.recent-car-card .price-label {
+  color: rgba(255, 255, 255, 0.8);
+  margin-right: 0.5rem;
+}
+
+.recent-car-card .price-value {
+  color: #fff;
+  font-weight: 600;
+}
+
+.recent-car-card .btn-outline-light {
+  width: 100%;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.recent-car-card .btn-outline-light:hover {
+  background: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0.5);
 }
 
 @media (max-width: 768px) {
