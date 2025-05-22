@@ -9,6 +9,8 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './landing.component.css'
 })
 export class LandingComponent implements OnInit {
+  activeFaq: number | null = null;
+
   constructor(
     private authService: AuthService,
     private router: Router
@@ -22,5 +24,9 @@ export class LandingComponent implements OnInit {
     } else {
       this.router.navigate(['/signin']);
     }
+  }
+
+  toggleFaq(index: number) {
+    this.activeFaq = this.activeFaq === index ? null : index;
   }
 }

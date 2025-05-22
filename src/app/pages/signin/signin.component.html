@@ -97,6 +97,25 @@
           </div>
         </div>
 
+        <div class="form-group" *ngIf="isSignUp">
+          <div class="form-check">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="privacyAgreement"
+              formControlName="privacyAgreement"
+              [class.is-invalid]="showPrivacyError"
+            >
+            <label class="form-check-label" for="privacyAgreement">
+              Eu li e concordo com a <a href="#" (click)="openPrivacyModal($event)">Política de Privacidade</a>
+              <span class="text-danger" *ngIf="showPrivacyError">*</span>
+            </label>
+            <div class="error-message" *ngIf="showPrivacyError">
+              É necessário concordar com a política de privacidade
+            </div>
+          </div>
+        </div>
+
         <button
           type="submit"
           class="btn-submit"
@@ -113,6 +132,69 @@
           {{ isSignUp ? 'Acessar perfil' : 'Criar conta' }}
         </button>
       </p>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="privacyModalLabel">Política de Privacidade</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h6>1. Coleta de Dados</h6>
+        <p>Coletamos apenas as informações necessárias para fornecer nossos serviços, incluindo:</p>
+        <ul>
+          <li>Dados de cadastro (nome, email, etc.)</li>
+          <li>Informações dos veículos cadastrados</li>
+          <li>Dados de uso da plataforma</li>
+        </ul>
+
+        <h6>2. Uso das Informações</h6>
+        <p>Utilizamos suas informações para:</p>
+        <ul>
+          <li>Fornecer e melhorar nossos serviços</li>
+          <li>Enviar notificações importantes</li>
+          <li>Garantir a segurança da plataforma</li>
+        </ul>
+
+        <h6>3. Proteção de Dados</h6>
+        <p>Implementamos medidas rigorosas de segurança para proteger suas informações:</p>
+        <ul>
+          <li>Criptografia de dados</li>
+          <li>Backups regulares</li>
+          <li>Controle de acesso</li>
+          <li>Conformidade com a LGPD</li>
+        </ul>
+
+        <h6>4. Seus Direitos</h6>
+        <p>Você tem direito a:</p>
+        <ul>
+          <li>Acessar seus dados</li>
+          <li>Corrigir informações</li>
+          <li>Solicitar exclusão de dados</li>
+          <li>Revogar consentimento</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-primary" (click)="agreeToPrivacy()">Concordar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="successToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <i class="bi bi-check-circle-fill text-success me-2"></i>
+      <strong class="me-auto">Sucesso!</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Conta criada com sucesso! Você está pronto para acessar o Dream Car.
     </div>
   </div>
 </div>

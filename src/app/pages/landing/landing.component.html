@@ -1,3 +1,4 @@
+<app-public-navbar></app-public-navbar>
 <section class="hero-section">
   <div class="hero-content">
     <h1 class="hero-title">Dream Car</h1>
@@ -33,7 +34,7 @@
   </div>
 </section>
 
-<section class="how-it-works-section">
+<section id="how-it-works" class="how-it-works-section">
   <div class="container">
     <h2 class="section-title">Como Funciona</h2>
     <div class="steps-container">
@@ -67,6 +68,91 @@
   </div>
 </section>
 
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="display-4">Perguntas Frequentes</h2>
+      <p class="lead">Tire suas dúvidas sobre nossa plataforma</p>
+    </div>
+    
+    <div class="faq-container">
+      <div class="faq-item" (click)="toggleFaq(0)" [class.active]="activeFaq === 0">
+        <div class="faq-question">
+          <h3>Como funciona o sistema de cadastro de veículos?</h3>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Nosso sistema permite o cadastro completo de veículos, incluindo informações como marca, modelo, ano, quilometragem e histórico de manutenção. Você pode adicionar fotos e documentos importantes, mantendo tudo organizado em um só lugar.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" (click)="toggleFaq(1)" [class.active]="activeFaq === 1">
+        <div class="faq-question">
+          <h3>Quais são os benefícios de usar a plataforma?</h3>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Nossa plataforma oferece uma gestão completa da sua frota, com recursos como histórico de manutenção, alertas de revisão, controle de documentos e relatórios detalhados. Tudo isso ajuda a manter seus veículos em dia e reduzir custos operacionais.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" (click)="toggleFaq(2)" [class.active]="activeFaq === 2">
+        <div class="faq-question">
+          <h3>Como é garantida a segurança dos dados?</h3>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Utilizamos as mais modernas tecnologias de segurança para proteger seus dados. Todas as informações são criptografadas, e seguimos rigorosamente as normas de proteção de dados (LGPD). Além disso, realizamos backups regulares para garantir a integridade das informações.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" (click)="toggleFaq(3)" [class.active]="activeFaq === 3">
+        <div class="faq-question">
+          <h3>Posso acessar a plataforma de qualquer dispositivo?</h3>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Sim! Nossa plataforma é totalmente responsiva e pode ser acessada de qualquer dispositivo - computador, tablet ou smartphone. Basta ter uma conexão com a internet e seu login de acesso.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="privacy-section" id="privacy">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="display-4">Privacidade e Segurança</h2>
+      <p class="lead">Compromisso com a proteção dos seus dados</p>
+    </div>
+
+    <div class="privacy-content">
+      <div class="privacy-card">
+        <i class="fas fa-shield-alt"></i>
+        <h3>Proteção de Dados</h3>
+        <p>Implementamos medidas rigorosas de segurança para proteger suas informações, incluindo criptografia de ponta a ponta e conformidade com a LGPD.</p>
+      </div>
+
+      <div class="privacy-card">
+        <i class="fas fa-lock"></i>
+        <h3>Acesso Seguro</h3>
+        <p>Utilizamos autenticação de dois fatores e monitoramento contínuo para garantir que apenas pessoas autorizadas acessem suas informações.</p>
+      </div>
+
+      <div class="privacy-card">
+        <i class="fas fa-database"></i>
+        <h3>Backup Regular</h3>
+        <p>Realizamos backups automáticos diários para garantir que seus dados estejam sempre seguros e disponíveis quando precisar.</p>
+      </div>
+
+      <div class="privacy-card">
+        <i class="fas fa-user-shield"></i>
+        <h3>Controle de Acesso</h3>
+        <p>Você tem controle total sobre quem pode acessar suas informações, com diferentes níveis de permissão para sua equipe.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <footer class="footer">
   <div class="container">

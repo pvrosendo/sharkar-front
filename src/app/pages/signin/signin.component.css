@@ -233,4 +233,138 @@
 
 mat-card-content {
   animation: fadeIn 0.5s ease-out;
+}
+
+.form-check {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-check-label {
+  color: var(--text-color);
+  font-size: 0.9rem;
+}
+
+.form-check-label a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.form-check-label a:hover {
+  text-decoration: underline;
+}
+
+.form-check-input.is-invalid {
+  border-color: #dc3545;
+}
+
+.text-danger {
+  color: #dc3545;
+}
+
+/* Modal Styles */
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-backdrop.show {
+  opacity: 1;
+}
+
+.modal-content {
+  background-color: #fff;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: 10px 10px 0 0;
+}
+
+.modal-header .btn-close {
+  color: #fff;
+  filter: brightness(0) invert(1);
+}
+
+.modal-body {
+  padding: 1.5rem;
+  color: var(--text-color);
+}
+
+.modal-body h6 {
+  color: var(--primary-color);
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.modal-body h6:first-child {
+  margin-top: 0;
+}
+
+.modal-body ul {
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.modal-body li {
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.modal-footer {
+  border-top: 1px solid var(--border-color);
+  padding: 1rem 1.5rem;
+}
+
+.modal-footer .btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.modal-footer .btn-primary:hover {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+
+.modal-footer .btn-secondary {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.modal-footer .btn-secondary:hover {
+  background-color: var(--secondary-dark);
+  border-color: var(--secondary-dark);
+}
+
+/* Toast Styles */
+.toast-container {
+  z-index: 1050;
+}
+
+.toast {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 300px;
+}
+
+.toast-header {
+  background-color: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 10px 10px 0 0;
+  padding: 0.75rem 1rem;
+}
+
+.toast-header i {
+  font-size: 1.2rem;
+}
+
+.toast-body {
+  padding: 1rem;
+  color: #333;
 } 

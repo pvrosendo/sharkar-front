@@ -23,6 +23,7 @@ import { SigninComponent } from './pages/signin/signin.component';
 import { LandingComponent } from './pages/landing/landing.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { PublicNavbarComponent } from './_components/public-navbar/public-navbar.component';
 registerLocaleData(localePt, 'pt-BR');
 
 @NgModule({
@@ -36,7 +37,8 @@ registerLocaleData(localePt, 'pt-BR');
     CarModalComponent,
     SigninComponent,
     LandingComponent,
-    DashboardComponent
+    DashboardComponent,
+    PublicNavbarComponent
   ],
   imports: [
     BrowserModule,
