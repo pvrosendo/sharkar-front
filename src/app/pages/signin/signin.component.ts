@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { UserCredentials } from '../../_models/userCredentials';
-import * as bootstrap from 'bootstrap';
+
+declare const bootstrap: any;
 
 @Component({
   selector: 'app-signin',
@@ -40,6 +41,7 @@ export class SigninComponent implements OnInit {
       delay: 3000,
       autohide: true
     });
+
   }
 
   toggleSignUp(): void {

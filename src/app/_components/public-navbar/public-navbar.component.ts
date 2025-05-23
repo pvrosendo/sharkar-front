@@ -11,7 +11,7 @@ export class PublicNavbarComponent {
   constructor(private router: Router) {}
 
   navigateToLogin() {
-    this.router.navigate(['/login']);
+    this.router.navigate(['/signin']);
   }
 
   scrollToSection(sectionId: string) {
@@ -19,9 +19,5 @@ export class PublicNavbarComponent {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
-  }
-
-  openPrivacyModal() {
-    this.scrollToSection('privacy');
   }
 }
