@@ -6,6 +6,7 @@ import { SigninComponent } from './pages/signin/signin.component';
 import { LandingComponent } from './pages/landing/landing.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AuthGuard } from './_guards/auth.guard';
+import { AccountConfigComponent } from './pages/account-config/account-config.component';
 
 export const routes: Routes = [
   {
@@ -31,6 +32,11 @@ export const routes: Routes = [
   {
     path: 'register-cars', 
     component: RegisterCarComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'account-config', 
+    component: AccountConfigComponent,
     canActivate: [AuthGuard]
   }
 ];

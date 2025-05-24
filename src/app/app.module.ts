@@ -24,6 +24,7 @@ import { LandingComponent } from './pages/landing/landing.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { PublicNavbarComponent } from './_components/public-navbar/public-navbar.component';
+import { AccountConfigComponent } from './pages/account-config/account-config.component';
 registerLocaleData(localePt, 'pt-BR');
 
 @NgModule({
@@ -38,7 +39,8 @@ registerLocaleData(localePt, 'pt-BR');
     SigninComponent,
     LandingComponent,
     DashboardComponent,
-    PublicNavbarComponent
+    PublicNavbarComponent,
+    AccountConfigComponent
   ],
   imports: [
     BrowserModule,
