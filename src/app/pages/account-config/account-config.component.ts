@@ -2,11 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-
-interface UserInfo {
-  username: string;
-  email: string;
-}
+import { UserInfo } from '../../_models/userInfo';
 
 @Component({
   selector: 'app-account-config',
@@ -18,8 +14,10 @@ export class AccountConfigComponent implements OnInit {
   accountForm: FormGroup;
   isEditing = false;
   userInfo: UserInfo = {
+    fullName: '',
     username: '',
-    email: ''
+    email: '',
+    password: ''
   };
 
   constructor(
@@ -28,14 +26,16 @@ export class AccountConfigComponent implements OnInit {
     private authService: AuthService
   ) {
     this.accountForm = this.fb.group({
+      fullName: ['', [Validators.required, Validators.minLength(5)]],
       username: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       currentPassword: ['', [Validators.required]],
       newPassword: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required]]
     }, {
-      validators: this.passwordMatchValidator
-    });
+      validators: [(form) => this.passwordMatchValidator(form)]
+    },
+  );
   }
 
   ngOnInit(): void {
@@ -43,15 +43,25 @@ export class AccountConfigComponent implements OnInit {
   }
 
   loadUserInfo() {
-    this.userInfo = {
-      username: 'usuario_teste',
-      email: 'usuario@teste.com'
-    };
+    this.authService.getUserInfo(localStorage.getItem('username') || '').subscribe({
+      next: (response) => {
+        this.userInfo = {
+          fullName: response.fullName,
+          username: response.username,
+          email: response.email,
+          password: response.password
+        };
+      }
+      , error: (error) => {
+        console.error('Error loading user info', error);
+      }
+    });
   }
 
   startEditing() {
     this.isEditing = true;
     this.accountForm.patchValue({
+      fullName: this.userInfo.fullName,
       username: this.userInfo.username,
       email: this.userInfo.email
     });
@@ -62,7 +72,7 @@ export class AccountConfigComponent implements OnInit {
     this.accountForm.reset();
   }
 
-  passwordMatchValidator(form: FormGroup) {
+  passwordMatchValidator(form: FormGroup | any) {
     const newPassword = form.get('newPassword')?.value;
     const confirmPassword = form.get('confirmPassword')?.value;
 
@@ -75,15 +85,25 @@ export class AccountConfigComponent implements OnInit {
 
   onSubmit() {
     if (this.accountForm.valid) {
-      console.log('Form submitted:', this.accountForm.value);
-      
+
       this.userInfo = {
-        username: this.accountForm.get('username')?.value,
-        email: this.accountForm.get('email')?.value
+        fullName: this.accountForm.get('fullName')?.value     || this.userInfo.fullName,
+        username: this.accountForm.get('username')?.value     || this.userInfo.username,
+        email: this.accountForm.get('email')?.value           || this.userInfo.email,
+        password: this.accountForm.get('newPassword')?.value  || this.userInfo.password
       };
-      
-      this.isEditing = false;
-      this.accountForm.reset();
+
+      this.authService.updateUSerInfo(this.userInfo).subscribe({
+        next: (response) => {
+          console.log('User info updated successfully', response);
+          this.isEditing = false;
+          this.accountForm.reset();
+          this.navigateToDashboard();
+        },
+        error: (error) => {
+          console.error('Error updating user info', error);
+        }
+      });
     }
   }
 
@@ -91,9 +111,9 @@ export class AccountConfigComponent implements OnInit {
     this.router.navigate(['/dashboard']);
   }
 
+  get fullName() { return this.accountForm.get('fullName'); }
   get username() { return this.accountForm.get('username'); }
   get email() { return this.accountForm.get('email'); }
-  get currentPassword() { return this.accountForm.get('currentPassword'); }
   get newPassword() { return this.accountForm.get('newPassword'); }
   get confirmPassword() { return this.accountForm.get('confirmPassword'); }
 }

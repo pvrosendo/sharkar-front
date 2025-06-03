@@ -18,10 +18,9 @@ export class AuthService {
 
   login(credentials: { username: string; password: string }): Observable<any> {
     return this.http.post(`${this.baseUrlAuth}/signin`, credentials, {
-      withCredentials: true // Importante para cookies
+      withCredentials: true
     }).pipe(
       tap(() => {
-        // Após login bem-sucedido, redireciona para dashboard
         this.router.navigate(['/dashboard']);
         localStorage.setItem('username', credentials.username);
       })
@@ -37,7 +36,6 @@ export class AuthService {
       withCredentials: true
     }).pipe(
       tap(() => {
-        // Após logout, redireciona para login
         this.router.navigate(['/login']);
         localStorage.removeItem('username');
       })
@@ -55,4 +53,16 @@ export class AuthService {
       withCredentials: true
     });
   }
-} 
+
+  getUserInfo(username: string): Observable<any> {
+    return this.http.get(`${this.baseUrlAuth}/user/${username}`, {
+      withCredentials: true
+    });
+  }
+
+  updateUSerInfo(userInfo: any): Observable<any> {
+    return this.http.put(`${this.baseUrlAuth}/user/updateInfo`, userInfo, {
+      withCredentials: true
+    });
+  }
+}
