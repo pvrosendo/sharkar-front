@@ -25,6 +25,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { PublicNavbarComponent } from './_components/public-navbar/public-navbar.component';
 import { AccountConfigComponent } from './pages/account-config/account-config.component';
+import { LoadingComponent } from './_components/loading/loading.component';
+
 registerLocaleData(localePt, 'pt-BR');
 
 @NgModule({
@@ -52,8 +54,9 @@ registerLocaleData(localePt, 'pt-BR');
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    MatFormFieldModule
-  ],
+    MatFormFieldModule,
+    LoadingComponent
+],
   providers: [
     { 
       provide: LOCALE_ID, useValue: 'pt'
