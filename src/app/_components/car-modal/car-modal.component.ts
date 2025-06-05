@@ -31,4 +31,8 @@ export class CarModalComponent {
     this.car = null;
     this.close.emit();
   }
+
+  removeAccents(str: string): string {
+    return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  } 
 }

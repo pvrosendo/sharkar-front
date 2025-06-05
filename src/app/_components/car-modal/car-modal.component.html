@@ -35,7 +35,7 @@
         <div class="info-item">
           <i class="bi bi-fuel-pump"></i>
           <div class="info-text">
-            <span class="info-label">Motor</span>
+            <span class="info-label">Combustível</span>
             <span class="info-value">{{ car.fuel }}</span>
           </div>
         </div>
@@ -44,6 +44,17 @@
           <div class="info-text">
             <span class="info-label">Última atualização</span>
             <span class="info-value">{{ car.referenceMonth }}</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <i class="bi bi-link"></i>
+          <div class="info-text">
+            <span class="info-label">Ver anúncios do Modelo</span>
+            <span class="info-value">
+              <a href="https://www.olx.com.br/autos-e-pecas/carros-vans-e-utilitarios/{{ car.brand.toLowerCase() }}?q={{ car.model }}&rs={{ car.year.slice(0, 4) }}&re={{ car.year.slice(0, 4) }}" target="_blank">
+                Link para anúncios na OLX
+              </a>
+            </span>
           </div>
         </div>
       </div>
