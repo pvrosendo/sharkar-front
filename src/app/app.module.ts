@@ -26,6 +26,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { PublicNavbarComponent } from './_components/public-navbar/public-navbar.component';
 import { AccountConfigComponent } from './pages/account-config/account-config.component';
 import { LoadingComponent } from './_components/loading/loading.component';
+import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -42,7 +43,8 @@ registerLocaleData(localePt, 'pt-BR');
     LandingComponent,
     DashboardComponent,
     PublicNavbarComponent,
-    AccountConfigComponent
+    AccountConfigComponent,
+    UpdatePasswordComponent
   ],
   imports: [
     BrowserModule,

@@ -19,6 +19,9 @@ export class SigninComponent implements OnInit {
   showPrivacyError = false;
   private privacyModal: any;
   private successToast: any;
+  private errorToast: any;
+  errorMessage: string = '';
+
 
   constructor(
     private fb: FormBuilder, 
@@ -41,7 +44,10 @@ export class SigninComponent implements OnInit {
       delay: 3000,
       autohide: true
     });
-
+    this.errorToast = new bootstrap.Toast(document.getElementById('errorToast') as HTMLElement, {
+      delay: 3000,
+      autohide: true
+    });
   }
 
   toggleSignUp(): void {
@@ -97,6 +103,7 @@ export class SigninComponent implements OnInit {
             }, 3000);
           },
           error: (error) => {
+            this.errorToast.show();
             console.error('Erro ao criar conta:', error);
           }
         });
@@ -118,8 +125,14 @@ export class SigninComponent implements OnInit {
           password: this.signinForm.get('password')?.value
         }
 
-        this.authService.login(userCredentials).subscribe(() => { 
-          this.router.navigate(['/dashboard']);
+        this.authService.login(userCredentials).subscribe({
+          next: () => {
+            this.router.navigate(['/dashboard']);
+          },
+          error: (error: any) => {
+            this.errorToast.show();
+            this.errorMessage = error.error.message;
+          }
         });
       }
     }

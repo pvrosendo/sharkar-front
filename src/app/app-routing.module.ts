@@ -7,6 +7,7 @@ import { LandingComponent } from './pages/landing/landing.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { AccountConfigComponent } from './pages/account-config/account-config.component';
+import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
 
 export const routes: Routes = [
   {
@@ -38,6 +39,10 @@ export const routes: Routes = [
     path: 'account-config', 
     component: AccountConfigComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'update-password', 
+    component: UpdatePasswordComponent,
   }
 ];
 

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, tap } from 'rxjs';
+import { catchError, tap, Observable, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { UserInfo } from '../_models/userInfo';
 
 @Injectable({
   providedIn: 'root'
@@ -60,8 +61,14 @@ export class AuthService {
     });
   }
 
-  updateUSerInfo(userInfo: any): Observable<any> {
+  updateUserInfo(userInfo: UserInfo): Observable<any> {
     return this.http.put(`${this.baseUrlAuth}/user/updateInfo`, userInfo, {
+      withCredentials: true
+    });
+  }
+
+  updateUserPassword(userInfo: UserInfo): Observable<any> {
+    return this.http.put(`${this.baseUrlAuth}/user/updatePassword`, userInfo, {
       withCredentials: true
     });
   }

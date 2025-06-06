@@ -93,7 +93,7 @@ export class AccountConfigComponent implements OnInit {
         password: this.accountForm.get('newPassword')?.value  || this.userInfo.password
       };
 
-      this.authService.updateUSerInfo(this.userInfo).subscribe({
+      this.authService.updateUserInfo(this.userInfo).subscribe({
         next: (response) => {
           console.log('User info updated successfully', response);
           this.isEditing = false;
