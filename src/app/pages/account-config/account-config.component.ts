@@ -29,11 +29,10 @@ export class AccountConfigComponent implements OnInit {
       fullName: ['', [Validators.required, Validators.minLength(5)]],
       username: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
-      currentPassword: ['', [Validators.required]],
       newPassword: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required]]
     }, {
-      validators: [(form) => this.passwordMatchValidator(form)]
+      validator: this.passwordMatchValidator
     },
   );
   }
@@ -72,7 +71,7 @@ export class AccountConfigComponent implements OnInit {
     this.accountForm.reset();
   }
 
-  passwordMatchValidator(form: FormGroup | any) {
+  passwordMatchValidator(form: FormGroup) {
     const newPassword = form.get('newPassword')?.value;
     const confirmPassword = form.get('confirmPassword')?.value;
 
@@ -85,7 +84,6 @@ export class AccountConfigComponent implements OnInit {
 
   onSubmit() {
     if (this.accountForm.valid) {
-
       this.userInfo = {
         fullName: this.accountForm.get('fullName')?.value     || this.userInfo.fullName,
         username: this.accountForm.get('username')?.value     || this.userInfo.username,
