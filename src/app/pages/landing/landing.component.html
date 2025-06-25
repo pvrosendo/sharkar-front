@@ -1,8 +1,8 @@
 <app-public-navbar></app-public-navbar>
 <section class="hero-section">
   <div class="hero-content">
-    <h1 class="hero-title">Dream Car</h1>
-    <p class="hero-subtitle">Monitore e compare os carros dos seus sonhos para tomar a melhor decisão de compra</p>
+    <h1 class="hero-title">Sharkar</h1>
+    <p class="hero-subtitle">Salve e compare os carros dos seus sonhos para tomar a melhor decisão de compra</p>
     <div class="hero-buttons">
       <a (click)="handleStartClick()" class="btn btn-primary btn-lg" style="cursor: pointer;">Começar Agora</a>
       <a href="#features" class="btn btn-outline-light btn-lg ms-3">Saiba Mais</a>
@@ -13,22 +13,22 @@
 
 <section id="features" class="features-section">
   <div class="container">
-    <h2 class="section-title">Por que escolher o Dream Car?</h2>
+    <h2 class="section-title">Por que escolher o Sharkar?</h2>
     <div class="features-grid">
       <div class="feature-card">
         <i class="bi bi-graph-up-arrow"></i>
         <h3>Comparação Inteligente</h3>
-        <p>Compare preços, especificações e avaliações de diferentes modelos para tomar a melhor decisão.</p>
+        <p>Compare preços e especificações de diferentes modelos para tomar a melhor decisão futuramente.</p>
       </div>
       <div class="feature-card">
         <i class="bi bi-currency-dollar"></i>
         <h3>Preços Atualizados</h3>
-        <p>Acesso a valores atualizados da tabela FIPE e análise de mercado em tempo real.</p>
+        <p>Veja valores atualizados da tabela FIPE e analise o mercado.</p>
       </div>
       <div class="feature-card">
         <i class="bi bi-clock-history"></i>
-        <h3>Histórico Detalhado</h3>
-        <p>Acompanhe a evolução dos preços e mantenha um registro completo dos carros que você deseja.</p>
+        <h3>Histórico</h3>
+        <p>Acompanhe a evolução dos preços e mantenha um registro dos carros que você deseja.</p>
       </div>
     </div>
   </div>
@@ -40,7 +40,7 @@
     <div class="steps-container">
       <div class="step">
         <div class="step-number">1</div>
-        <h3>Registre seu Carro</h3>
+        <h3>Registre o Carro desejado</h3>
         <p>Adicione os carros que você deseja à sua lista de monitoramento.</p>
       </div>
       <div class="step">
@@ -51,7 +51,7 @@
       <div class="step">
         <div class="step-number">3</div>
         <h3>Acompanhe o Histórico</h3>
-        <p>Monitore a evolução dos preços e mantenha um registro completo dos seus carros desejados.</p>
+        <p>Monitore a evolução dos preços e mantenha um registro dos seus carros desejados.</p>
       </div>
     </div>
   </div>
@@ -78,11 +78,11 @@
     <div class="faq-container">
       <div class="faq-item" (click)="toggleFaq(0)" [class.active]="activeFaq === 0">
         <div class="faq-question">
-          <h3>Como funciona o sistema de cadastro de veículos?</h3>
+          <h3>Como funciona o sistema de registro de veículos?</h3>
           <i class="fas fa-chevron-down"></i>
         </div>
         <div class="faq-answer">
-          <p>Nosso sistema permite o cadastro completo de veículos, incluindo informações como marca, modelo, ano, quilometragem e histórico de manutenção. Você pode adicionar fotos e documentos importantes, mantendo tudo organizado em um só lugar.</p>
+          <p>Nosso sistema permite o registro de veículo que possui na tabela FIPE, incluindo informações como marca, modelo, ano, preço e mais. </p>
         </div>
       </div>
 
@@ -92,17 +92,19 @@
           <i class="fas fa-chevron-down"></i>
         </div>
         <div class="faq-answer">
-          <p>Nossa plataforma oferece uma gestão completa da sua frota, com recursos como histórico de manutenção, alertas de revisão, controle de documentos e relatórios detalhados. Tudo isso ajuda a manter seus veículos em dia e reduzir custos operacionais.</p>
+          <p>Você pode adicionar os veículos aos quais está interessado, consultar quedas de preço e ainda possui acesso direto a anúncios de venda. Tudo isso mantendo a sua organização e centralização em um só lugar.</p>
         </div>
       </div>
 
       <div class="faq-item" (click)="toggleFaq(2)" [class.active]="activeFaq === 2">
         <div class="faq-question">
-          <h3>Como é garantida a segurança dos dados?</h3>
+          <h3>Como funciona o sistema de monitoramento e alerta de preço?</h3>
           <i class="fas fa-chevron-down"></i>
         </div>
         <div class="faq-answer">
-          <p>Utilizamos as mais modernas tecnologias de segurança para proteger seus dados. Todas as informações são criptografadas, e seguimos rigorosamente as normas de proteção de dados (LGPD). Além disso, realizamos backups regulares para garantir a integridade das informações.</p>
+          <p>
+            Em breve você terá acesso também a possibilidade de receber alertas quando preços de seus veículos registrados tiverem baixa.
+          </p>
         </div>
       </div>
 
@@ -112,7 +114,18 @@
           <i class="fas fa-chevron-down"></i>
         </div>
         <div class="faq-answer">
-          <p>Sim! Nossa plataforma é totalmente responsiva e pode ser acessada de qualquer dispositivo - computador, tablet ou smartphone. Basta ter uma conexão com a internet e seu login de acesso.</p>
+          <p>Sim. Nossa plataforma é totalmente responsiva e pode ser acessada de qualquer dispositivo - computador, tablet ou smartphone. Basta ter uma conexão com a internet e seu login de acesso.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" (click)="toggleFaq(4)" [class.active]="activeFaq === 4">
+        <div class="faq-question">
+          <h3>Como são obtidas as informações dos veículos?</h3>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>O Sharkar utiliza as informações disponibilizadas pela <a href="https://fipe.online/" target="_blank">API Fipe</a> para fornecer os dados dos carros.
+          </p>
         </div>
       </div>
     </div>
@@ -124,7 +137,7 @@
     <div class="footer-content">
       <div class="footer-brand">
         <i class="bi bi-car-front-fill"></i>
-        <span>Dream Car</span>
+        <span>Sharkar</span>
       </div>
 
       <div class="footer-social">
