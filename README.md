@@ -1,3 +1,3 @@
-# DreamCar (frontend)
+# Sharkar (frontend)
 
 _In development_
