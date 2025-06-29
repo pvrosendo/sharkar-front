@@ -5,7 +5,7 @@ name: Deploy Angular App to AWS S3
 # Aciona o workflow em pushes para a branch 'main'
 on:
   push:
-    branches: ["master"]
+    branches: ["develop"]
 
 jobs:
   deploy:
@@ -29,7 +29,7 @@ jobs:
       # 4. Roda o comando de build do Angular
       # ATENÇÃO: Substitua 'seu-projeto-angular' pelo nome do seu projeto no angular.json
       - name: Build Angular App
-        run: ng build car-front --configuration production
+        run: npm run build car-front --configuration production
 
       # 5. Configura as credenciais da AWS usando os Secrets do GitHub
       - name: Configure AWS Credentials
