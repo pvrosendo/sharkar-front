@@ -1,0 +1,86 @@
+<app-navbar></app-navbar>
+<div class="dashboard-container">
+  <div class="dashboard-header">
+    <h1>Bem-vindo ao Sharkar</h1>
+    <p>Monitore seus carros favoritos e acompanhe as melhores oportunidades</p>
+  </div>
+
+  <div class="quick-actions">
+    <div class="row g-3">
+      <div class="col-md-6">
+        <div class="card action-card" (click)="navigateToRegister()">
+          <div class="card-body">
+            <i class="bi bi-plus-circle-fill"></i>
+            <h3>Registrar Novo Carro</h3>
+            <p>Adicione um novo carro para monitoramento</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card action-card" (click)="navigateToViewCars()">
+          <div class="card-body">
+            <i class="bi bi-grid-3x3-gap-fill"></i>
+            <h3>Ver Todos os Carros</h3>
+            <p>Visualize e gerencie seus carros registrados</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dashboard-section">
+    <h2>Carros Recentes</h2>
+    <div class="row g-3">
+      <div class="col-12" *ngIf="isLoading">
+        <div class="text-center">
+          <div class="spinner-border" role="status">
+            <span class="visually-hidden">Carregando...</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-12" *ngIf="!isLoading && recentCars.length === 0">
+        <div class="alert">
+          <i class="bi bi-info-circle me-2"></i>
+          Você ainda não tem carros registrados. Comece adicionando um novo carro!
+        </div>
+      </div>
+      <div class="col-md-3 mb-3" *ngFor="let car of recentCars">
+        <div class="card recent-car-card">
+          <div class="card-body">
+            <h5 class="card-title">{{car.model}}</h5>
+            <p class="card-text">
+              <small class="text-muted">{{car.brand}} - {{car.year}}</small>
+            </p>
+            <div class="car-price">
+              <span class="price-label">Preço:</span>
+              <span class="price-value">{{car.price}}</span>
+            </div>
+            <button class="btn btn-outline-light btn-sm mt-2" (click)="navigateToViewCars()">
+              Ver detalhes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dashboard-section">
+    <h2>Alertas de Preço</h2>
+    <div class="row g-3">
+      <div class="col-12" *ngIf="isLoading">
+        <div class="text-center">
+          <div class="spinner-border" role="status">
+            <span class="visually-hidden">Carregando...</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-12" *ngIf="!isLoading && priceAlerts.length === 0">
+        <div class="alert">
+          <i class="bi bi-info-circle me-2"></i>
+          Nenhum alerta de preço no momento.
+        </div>
+      </div>
+      <!-- TODO: Implementar cards de alertas de preço -->
+    </div>
+  </div>
+</div> 

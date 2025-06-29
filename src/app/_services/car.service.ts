@@ -1,32 +1,34 @@
 import { Injectable } from '@angular/core';
-import { Car } from '../_models/car';
+import { environment } from '../../environments/environment.development';
+import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarService {
 
-  constructor() { }
-  
-  cars: Car[] = [
-    {
-      model: 'fit',
-      brand: 'honda',
-      year: '2005'
-    },
-    {
-      model: 'uno',
-      brand: 'fiat',
-      year: '2019'
-    },
-    {
-      model: 'polo',
-      brand: 'volkswagen',
-      year: '2020'
-    }
-  ];
+  baseUrl: string = environment.apiUrl;
+ 
+  constructor(private http: HttpClient, private authService: AuthService) { }
+
+
+  addCar(car: any) {
+    return this.http.post(this.baseUrl, car);
+  }
+
+
+  deleteCar(id: Number) {
+    return this.http.delete(this.baseUrl, {params: {id: id.toString()}});   
+  }
 
   getAllCars(){
-    return this.cars;
+    const username = localStorage.getItem('username');
+    return this.http.get(this.baseUrl, {params: {username: username || ''}});
   }
+
+  getCarById(id: Number) {
+    return this.http.get(`${this.baseUrl}/${id}`);
+  }
+
 }

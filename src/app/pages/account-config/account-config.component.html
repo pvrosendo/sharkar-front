@@ -1,0 +1,137 @@
+<div class="container">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Configurações da conta</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <div class="card">
+                    <div class="card-header">
+                        <button class="back-button" (click)="navigateToDashboard()">
+                            <i class="bi bi-arrow-left"></i>
+                            Voltar para o Dashboard
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <!-- Modo de Visualização -->
+                        <div *ngIf="!isEditing" class="view-mode">
+                            <div class="info-section">
+                                <div class="info-group">
+                                    <label>Nome Completo</label>
+                                    <p>{{userInfo.fullName}}</p>
+                                </div>
+                                <div class="info-group">
+                                    <label>Nome de Usuário</label>
+                                    <p>{{userInfo.username}}</p>
+                                </div>
+                                <div class="info-group">
+                                    <label>Email</label>
+                                    <p>{{userInfo.email}}</p>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button class="btn btn-primary" (click)="startEditing()">
+                                    <i class="bi bi-pencil-square me-2"></i>
+                                    Editar Configurações
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Modo de Edição -->
+                        <form *ngIf="isEditing" [formGroup]="accountForm" (ngSubmit)="onSubmit()">
+                            <!-- FullName Section -->
+                            <div class="form-section mb-4">
+                                <h3>Alterar Nome</h3>
+                                <div class="form-group">
+                                    <label for="fullName">Novo nome</label>
+                                    <input 
+                                        type="text" 
+                                        class="form-control" 
+                                        id="fullName" 
+                                        formControlName="fullName"
+                                        placeholder="Digite seu nome">
+                                </div>
+                            </div>
+                            <!-- Username Section -->
+                            <div class="form-section mb-4">
+                                <h3>Alterar Nome de Usuário</h3>
+                                <div class="form-group">
+                                    <label for="username">Novo nome de usuário</label>
+                                    <input 
+                                        type="text" 
+                                        class="form-control" 
+                                        id="username" 
+                                        formControlName="username"
+                                        placeholder="Digite seu novo nome de usuário">
+                                    <div class="error-message" *ngIf="username?.invalid && username?.touched">
+                                        Nome de usuário é obrigatório e deve ter no mínimo 3 caracteres
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Email Section -->
+                            <div class="form-section mb-4">
+                                <h3>Alterar Email</h3>
+                                <div class="form-group">
+                                    <label for="email">Novo email</label>
+                                    <input 
+                                        type="email" 
+                                        class="form-control" 
+                                        id="email" 
+                                        formControlName="email"
+                                        placeholder="Digite seu novo email">
+                                    <div class="error-message" *ngIf="email?.invalid && email?.touched">
+                                        Por favor, insira um email válido
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Password Section -->
+                            <div class="form-section mb-4">
+                                <h3>Alterar Senha</h3>
+                                <div class="form-group">
+                                    <label for="newPassword">Nova senha</label>
+                                    <input 
+                                        type="password" 
+                                        class="form-control" 
+                                        id="newPassword" 
+                                        formControlName="newPassword"
+                                        placeholder="Digite sua nova senha">
+                                    <div class="error-message" *ngIf="newPassword?.invalid && newPassword?.touched">
+                                        Nova senha deve ter no mínimo 6 caracteres
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirmPassword">Confirmar nova senha</label>
+                                    <input 
+                                        type="password" 
+                                        class="form-control" 
+                                        id="confirmPassword" 
+                                        formControlName="confirmPassword"
+                                        placeholder="Confirme sua nova senha">
+                                    <div class="error-message" *ngIf="accountForm.hasError('passwordMismatch') && confirmPassword?.touched">
+                                        As senhas não coincidem
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <div class="d-flex gap-2">
+                                    <button type="button" class="btn btn-outline-light flex-grow-1" (click)="cancelEditing()">
+                                        Cancelar
+                                    </button>
+                                    <button type="submit" class="btn btn-primary flex-grow-1" [disabled]="!accountForm.valid">
+                                        Salvar alterações
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

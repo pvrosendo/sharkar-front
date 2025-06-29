@@ -1,5 +1,19 @@
-export interface Car{
+export interface Car {
+  id: Number;
   model: String;
   brand: String;
-  year: String; //TODO: trocar para number
+  year: String;
+  fuel: String;
+  price: String;
+  referenceMonth: String;
+}
+
+
+export interface FipeInfoModel {
+  model: String;
+  brand: String;
+  year: String;
+  fuel: String;
+  price: String;
+  referenceMonth: String;
 }

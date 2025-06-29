@@ -1,9 +1,18 @@
-<!-- component para visualizar todos os carros ja registrados -->
 
-<div class="row">
-  <app-car-d
-    *ngFor="let car of listCars"
-    [car] = "car"
-    class="col-md-3 mb-3"
-  ></app-car-d>
+<app-navbar></app-navbar>
+<div class="view-cars-container">
+  <div class="view-cars-header"></div>
+  <div class="row" *ngIf="cars.length > 0">
+    <app-car-d
+      *ngFor="let car of cars"
+      [car]="car"
+      (viewExpensiveCar)="openExpensiveCarModal($event)"
+      class="col-md-3 mb-3"
+    ></app-car-d>
+  </div>
+  <app-car-modal 
+    [car]="expensiveCar" 
+    (close)="closeModal()" 
+    (carDeleted)="refreshCars()">
+  </app-car-modal>
 </div>

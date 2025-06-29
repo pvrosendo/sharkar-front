@@ -1,8 +1,13 @@
 <!-- component de card para visualizar os carros -->
-<div class="card">
-  <div class="card-header">{{ car.model }}</div>
-  <div class="card-body"> 
-    <p><b>Brand: </b> {{ car.brand}}</p>
-    <p><b>Year: </b> {{ car.year}}</p>
+
+<div class="card text-white bg-dark mb-3 car-card">
+  <div class="card-header text-truncate">{{ car.model }}</div>
+  <div class="card-body">
+    <p class="text-truncate"><b>Marca: </b> {{ car.brand }}</p>
+    <p><b>Ano: </b> {{ car.year }}</p>
+    <p><b>Preço: </b> {{ car.price}}</p>
+    <p><b>Combustível: </b> {{ car.fuel }}</p>
   </div>
+  <button type="button" class="btn btn-primary" (click)="openExpensiveCarModal()">Ver mais</button>
 </div>
+
