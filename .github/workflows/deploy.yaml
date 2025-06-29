@@ -29,7 +29,7 @@ jobs:
       # 4. Roda o comando de build do Angular
       # ATENÇÃO: Substitua 'seu-projeto-angular' pelo nome do seu projeto no angular.json
       - name: Build Angular App
-        run: npm run build car-front --configuration production
+        run: npm run build
 
       # 5. Configura as credenciais da AWS usando os Secrets do GitHub
       - name: Configure AWS Credentials
