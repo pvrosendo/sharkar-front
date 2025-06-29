@@ -1,0 +1,51 @@
+# .github/workflows/deploy.yml
+
+name: Deploy Angular App to AWS S3
+
+# Aciona o workflow em pushes para a branch 'main'
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest # Usa uma máquina virtual Linux para rodar o job
+
+    steps:
+      # 1. Baixa o código do seu repositório
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # 2. Configura o ambiente Node.js para buildar o Angular
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.20.8' # Use a versão LTS do Node que seu projeto utiliza
+
+      # 3. Instala as dependências do projeto
+      - name: Install Dependencies
+        run: npm install
+
+      # 4. Roda o comando de build do Angular
+      # ATENÇÃO: Substitua 'seu-projeto-angular' pelo nome do seu projeto no angular.json
+      - name: Build Angular App
+        run: npm run build --configuration production
+
+      # 5. Configura as credenciais da AWS usando os Secrets do GitHub
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1 # Pode ser qualquer região, não importa para S3/CloudFront
+
+      # 6. Sincroniza a pasta de build (dist/) com o bucket S3
+      # ATENÇÃO: Substitua 'seu-projeto-angular' novamente
+      - name: Deploy to S3
+        run: |
+          aws s3 sync ./dist/car-front/browser s3://${{ secrets.AWS_S3_BUCKET }} --delete
+
+      # 7. Invalida o cache do CloudFront para que as atualizações apareçam
+      - name: Invalidate CloudFront Cache
+        run: |
+          aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
