@@ -5,7 +5,7 @@ name: Deploy Angular App to AWS S3
 # Aciona o workflow em pushes para a branch 'main'
 on:
   push:
-    branches: ["develop"]
+    branches: ["master"]
 
 jobs:
   deploy:
