@@ -1,9 +1,8 @@
-name: Deploy Angular App to AWS S3
-
+name: Deploy to AWS S3
 
 on:
   push:
-    branches: ["master"]
+    branches: [""]
 
 jobs:
   deploy:
